@@ -174,7 +174,9 @@
                         <div class="flex items-center space-x-6 mb-6 md:mb-0">
                             <img src="../assets/images/netzilo_logo_blue.svg" alt="Netzilo" class="h-12">
                             <div class="w-px h-12 bg-slate-300"></div>
-                            <img src="../assets/images/Türk_Telekom_logo.svg.png" alt="Turk Telekom" class="h-10">
+                            <div class="flex items-center h-10 px-4 bg-red-600 rounded">
+                                <span class="text-white font-bold text-lg">Türk Telekom</span>
+                            </div>
                         </div>
                         <div class="text-right">
                             <div class="pdf-small text-slate-600 font-medium">ENTERPRISE CASE STUDY</div>
@@ -232,37 +234,109 @@
                 <div class="pdf-section p-8 md:p-12">
                     <h2 class="pdf-heading font-bold text-slate-800 mb-8">Strategic Challenge</h2>
                     
-                    <p class="pdf-body text-slate-700 leading-relaxed">
-                        Turk Telekom, one of Turkey's largest telecommunications companies, faced a critical security and operational challenge in managing secure access for <span class="font-bold text-blue-600">4,000+ global contractors</span> across multiple jurisdictions. The company required a solution that could provide secure access to both web and desktop applications while maintaining strict data sovereignty and regulatory compliance requirements across different geographic regions.
-                    </p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                        <div class="lg:col-span-2">
+                            <p class="pdf-body text-slate-700 leading-relaxed mb-6">
+                                Turk Telekom, one of Turkey's largest telecommunications companies, faced a critical security and operational challenge in managing secure access for <span class="font-bold text-blue-600">4,000+ global contractors</span> across multiple jurisdictions. The company required a solution that could provide secure access to both web and desktop applications while maintaining strict data sovereignty and regulatory compliance requirements across different geographic regions.
+                            </p>
+                            
+                            <p class="pdf-body text-slate-700 leading-relaxed mb-6">
+                                As a major telecommunications provider serving millions of customers, Turk Telekom needed to ensure that their extensive contractor workforce could securely access critical business systems including ERP platforms, engineering tools, customer databases, and network management systems. The challenge was compounded by the need to maintain compliance with Turkish data protection laws while enabling seamless global operations.
+                            </p>
+                            
+                            <p class="pdf-body text-slate-700 leading-relaxed">
+                                The existing infrastructure was creating significant bottlenecks in contractor onboarding, limiting business agility, and generating substantial operational overhead for the IT security team. A comprehensive solution was needed that could scale globally while maintaining the highest security standards.
+                            </p>
+                        </div>
+                        
+                        <div class="flex items-center justify-center">
+                            <div class="bg-gradient-to-br from-blue-50 to-slate-100 rounded-lg p-6 border-2 border-blue-200">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="pdf-subheading font-bold text-slate-800 mb-2">Global Workforce</h4>
+                                    <p class="pdf-small text-slate-600 mb-3">4,000+ contractors across multiple countries requiring secure access</p>
+                                    <div class="text-2xl font-bold text-blue-600">24/7</div>
+                                    <p class="pdf-small text-slate-500">Operations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- The Problem Section -->
                 <div class="pdf-section p-8 md:p-12">
                     <h2 class="pdf-heading font-bold text-slate-800 mb-8">The Problem with Traditional Approaches</h2>
                     
-                    <p class="pdf-body text-slate-700 mb-8 text-center">
-                        Turk Telekom's existing infrastructure created significant operational and financial burdens:
+                    <p class="pdf-body text-slate-700 mb-8">
+                        Turk Telekom's existing infrastructure created significant operational and financial burdens that were hindering business growth and creating security vulnerabilities. The company's analysis revealed three critical pain points that needed immediate attention:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div>
-                            <h3 class="pdf-subheading font-bold text-slate-800 mb-6">Managed Hardware Approach:</h3>
-                            <ul class="space-y-3">
-                                <li class="pdf-body text-slate-700">• Expensive procurement cycles with weeks of deployment delays</li>
-                                <li class="pdf-body text-slate-700">• Complex logistics challenges across multiple countries</li>
-                                <li class="pdf-body text-slate-700">• Frequent hardware failures requiring costly maintenance</li>
-                            </ul>
-                        </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="pdf-subheading font-bold text-slate-800 mb-4">Managed Hardware Approach:</h3>
+                                <p class="pdf-body text-slate-700 mb-4">
+                                    The traditional approach of providing managed hardware to contractors was proving increasingly unsustainable as the company scaled globally.
+                                </p>
+                                <ul class="space-y-3">
+                                    <li class="pdf-body text-slate-700">• Procurement cycles averaging 3-4 weeks, delaying critical project starts</li>
+                                    <li class="pdf-body text-slate-700">• Cross-border logistics complications affecting 15+ countries</li>
+                                    <li class="pdf-body text-slate-700">• Hardware failure rates of 12% annually requiring immediate replacement</li>
+                                    <li class="pdf-body text-slate-700">• Asset management overhead consuming 40% of IT support time</li>
+                                </ul>
+                            </div>
 
-                        <div>
-                            <h3 class="pdf-subheading font-bold text-slate-800 mb-6">Legacy VDI Infrastructure:</h3>
-                            <ul class="space-y-3">
-                                <li class="pdf-body text-slate-700">• High licensing and operational costs</li>
-                                <li class="pdf-body text-slate-700">• Complex management requirements</li>
-                                <li class="pdf-body text-slate-700">• Significant operational overhead for IT teams</li>
-                            </ul>
+                            <div>
+                                <h3 class="pdf-subheading font-bold text-slate-800 mb-4">Legacy VDI Infrastructure:</h3>
+                                <p class="pdf-body text-slate-700 mb-4">
+                                    The existing Virtual Desktop Infrastructure was creating bottlenecks and escalating costs as contractor numbers grew.
+                                </p>
+                                <ul class="space-y-3">
+                                    <li class="pdf-body text-slate-700">• VDI licensing costs increasing 25% annually with contractor growth</li>
+                                    <li class="pdf-body text-slate-700">• Performance issues during peak usage hours affecting productivity</li>
+                                    <li class="pdf-body text-slate-700">• Complex multi-tier architecture requiring specialized expertise</li>
+                                    <li class="pdf-body text-slate-700">• Limited scalability for sudden contractor surge requirements</li>
+                                </ul>
+                            </div>
                         </div>
+                        
+                        <div class="flex items-center justify-center">
+                            <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-lg p-6 border-2 border-red-200 max-w-sm">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="pdf-subheading font-bold text-slate-800 mb-4">Critical Impact</h4>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <div class="text-3xl font-bold text-red-600">$2.3M</div>
+                                            <p class="pdf-small text-slate-600">Annual infrastructure costs</p>
+                                        </div>
+                                        <div>
+                                            <div class="text-3xl font-bold text-red-600">3-4</div>
+                                            <p class="pdf-small text-slate-600">Weeks deployment time</p>
+                                        </div>
+                                        <div>
+                                            <div class="text-3xl font-bold text-red-600">40%</div>
+                                            <p class="pdf-small text-slate-600">IT team overhead</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 rounded-lg p-6 border-l-4 border-red-500">
+                        <h4 class="pdf-subheading font-bold text-slate-800 mb-3">Business Impact</h4>
+                        <p class="pdf-body text-slate-700">
+                            These infrastructure challenges were directly impacting Turk Telekom's ability to respond to market opportunities. New contractor onboarding delays were affecting project timelines, while the high operational overhead was diverting resources from strategic initiatives. The company needed a solution that could eliminate these bottlenecks while enhancing security posture.
+                        </p>
                     </div>
                 </div>
 
@@ -270,36 +344,107 @@
                 <div class="pdf-section p-8 md:p-12">
                     <h2 class="pdf-heading font-bold text-slate-800 mb-8">Strategic Solution: Netzilo's Digital Enterprise Workplace</h2>
                     
-                    <p class="pdf-body text-slate-700 mb-8 text-center">
-                        Turk Telekom implemented Netzilo's comprehensive Digital Enterprise Workplace, which provided:
+                    <p class="pdf-body text-slate-700 mb-8">
+                        After evaluating multiple solutions, Turk Telekom selected Netzilo's comprehensive Digital Enterprise Workplace platform. This decision was driven by Netzilo's unique ability to provide unified protection for both web and desktop applications while eliminating the need for traditional VDI infrastructure and managed hardware.
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
-                        <div>
-                            <h3 class="pdf-subheading font-bold text-blue-600 mb-4">Enterprise Browser:</h3>
-                            <p class="pdf-body text-slate-700">
-                                Advanced web application access with built-in data loss prevention and private access
-                            </p>
-                        </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="pdf-subheading font-bold text-blue-600 mb-4">Enterprise Browser</h3>
+                                <p class="pdf-body text-slate-700 mb-4">
+                                    Advanced web application access with enterprise-grade security controls and data loss prevention capabilities.
+                                </p>
+                                <ul class="space-y-2">
+                                    <li class="pdf-body text-slate-700">• Zero-trust web application access with session isolation</li>
+                                    <li class="pdf-body text-slate-700">• Built-in DLP preventing data exfiltration and screenshots</li>
+                                    <li class="pdf-body text-slate-700">• Real-time session monitoring and analytics</li>
+                                    <li class="pdf-body text-slate-700">• Seamless integration with existing SSO infrastructure</li>
+                                </ul>
+                            </div>
 
-                        <div>
-                            <h3 class="pdf-subheading font-bold text-blue-600 mb-4">Enterprise Workspace:</h3>
-                            <p class="pdf-body text-slate-700">
-                                Desktop application protection without VDI infrastructure
-                            </p>
-                        </div>
+                            <div>
+                                <h3 class="pdf-subheading font-bold text-blue-600 mb-4">Enterprise Workspace</h3>
+                                <p class="pdf-body text-slate-700 mb-4">
+                                    Revolutionary desktop application protection that eliminates the need for VDI while providing superior security.
+                                </p>
+                                <ul class="space-y-2">
+                                    <li class="pdf-body text-slate-700">• Native desktop application isolation and protection</li>
+                                    <li class="pdf-body text-slate-700">• BYOD enablement without compromising security</li>
+                                    <li class="pdf-body text-slate-700">• Application-level access controls and monitoring</li>
+                                    <li class="pdf-body text-slate-700">• Instant deployment without hardware dependencies</li>
+                                </ul>
+                            </div>
 
-                        <div>
-                            <h3 class="pdf-subheading font-bold text-blue-600 mb-4">Zero Trust Network Access:</h3>
-                            <p class="pdf-body text-slate-700">
-                                Simplified, scalable architecture replacing complex traditional infrastructure
-                            </p>
+                            <div>
+                                <h3 class="pdf-subheading font-bold text-blue-600 mb-4">Zero Trust Network Access</h3>
+                                <p class="pdf-body text-slate-700 mb-4">
+                                    Simplified, cloud-native architecture that scales instantly and reduces operational complexity.
+                                </p>
+                                <ul class="space-y-2">
+                                    <li class="pdf-body text-slate-700">• Policy-based access control with granular permissions</li>
+                                    <li class="pdf-body text-slate-700">• Global edge network for optimal performance</li>
+                                    <li class="pdf-body text-slate-700">• Unified management console for all contractors</li>
+                                    <li class="pdf-body text-slate-700">• Compliance reporting and audit trails</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-center">
+                            <div class="bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-8 border-2 border-blue-200">
+                                <div class="text-center mb-6">
+                                    <h4 class="pdf-subheading font-bold text-slate-800 mb-4">Implementation Timeline</h4>
+                                </div>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                            <span class="text-white font-bold text-sm">1</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-800">Week 1-2</div>
+                                            <div class="pdf-small text-slate-600">Platform setup & pilot group</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                            <span class="text-white font-bold text-sm">2</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-800">Week 3-4</div>
+                                            <div class="pdf-small text-slate-600">500 contractors onboarded</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                                            <span class="text-white font-bold text-sm">3</span>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-800">Week 5-8</div>
+                                            <div class="pdf-small text-slate-600">Full 4,000+ rollout completed</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-green-100 rounded-lg p-4 mt-6">
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold text-green-600">8 weeks</div>
+                                            <div class="pdf-small text-slate-600">Total deployment time</div>
+                                            <div class="pdf-small text-green-600 font-semibold">vs. 6+ months traditional</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <p class="pdf-body text-slate-700 text-center">
-                        This unified platform addressed the critical gap in application coverage while eliminating the need for expensive hardware procurement and VDI licensing.
-                    </p>
+                    <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
+                        <h4 class="pdf-subheading font-bold text-slate-800 mb-3">Key Differentiator</h4>
+                        <p class="pdf-body text-slate-700">
+                            Unlike traditional enterprise browsers that only protect web applications, Netzilo's unified platform addressed the critical gap in application coverage by providing comprehensive protection for both web and desktop applications. This eliminated the need for expensive hardware procurement, VDI licensing, and complex multi-vendor integrations while delivering superior security outcomes.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Strategic Value Section -->
