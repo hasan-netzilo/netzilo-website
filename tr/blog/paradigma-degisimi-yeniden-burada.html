@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradigma Değişimi Yeniden Burada. - Netzilo Blog</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Ana Sayfa</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Ürün</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Çözümler</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Fiyatlandırma</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Hakkımızda</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="../../blog/the-paradigm-shift-is-here-again.html" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors border border-gray-600 rounded-md hover:border-blue-400">
+                        EN
+                    </a>
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Başlayın
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Ana Sayfa</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Ürün</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Çözümler</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Fiyatlandırma</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Hakkımızda</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">İletişim</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../../blog/the-paradigm-shift-is-here-again.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">EN</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Başlayın
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Blog'a Dön
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-sm font-semibold border border-blue-600/30">
+                        AI & Güvenlik
+                    </span>
+                    <span class="ml-4 text-gray-500">4 Kasım 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Paradigma Değişimi Yeniden <span class="gradient-text">Burada.</span>
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    Biz, Netzilo ekibi olarak, on yılı aşkın bir süredir kurumsal güvenlikteki büyük değişimleri yaşıyor ve çözümler inşa ediyoruz.
+                </p>
+
+                <p>
+                    Netzilo'dan önce, farklı şirketlerde birlikte çalışarak kuruluşların değişen güvenlik çevresinde gezinmelerine yardımcı olduk ve kimlik ile güvenin nasıl çalışması gerektiğini yeniden tanımladık. Her dönüşüm yeni zorluklar getirdi — ve biz oradaydık, çözümleri şekillendiriyorduk.
+                </p>
+
+                <p>
+                    <strong class="text-white">Zero Trust terimi ilk kez ortaya çıktığında oradaydık</strong> — kimlik merkezli güvenliğin pratikte ne anlama geldiğini tanımlamaya yardımcı olduk.
+                </p>
+
+                <p>
+                    <strong class="text-white">Eski VPN'ler başarısız olmaya başladığında oradaydık</strong> — güvenli bağlantı için yeni bir standart belirleyen SDP ve ZTNA platformları inşa ettik.
+                </p>
+
+                <p>
+                    <strong class="text-white">Kuruluşların yönetilmeyen uç noktaları entegre etmesi gerektiğinde oradaydık</strong> — korumayı kurumsal sınırların ötesine genişletmek için Kurumsal Tarayıcı'yı öncülük ettik.
+                </p>
+
+                <p>
+                    Ve şimdi, <strong class="text-blue-400">yine buradayız — bir sonraki dönüşüm için üzerimize düşeni yapıyoruz: Post-AI dönemi için güvenlik.</strong>
+                </p>
+
+                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 my-8">
+                    <p class="text-gray-300">
+                        Cloudflare'e göre, AI agentlar artık tüm web trafiğinin neredeyse <strong class="text-blue-400">%40'ını</strong> üretiyor. Gördüğünüz "anormal bot trafiği" uyarıları? Bunlar gürültü değil — zaten devam eden temel bir değişimin sinyalleri.
+                    </p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white mt-12 mb-6">AI agentlar işlerin nasıl yapıldığını yeniden şekillendiriyor.</h2>
+
+                <ul class="space-y-3 text-gray-300 mb-8">
+                    <li class="flex items-start">
+                        <span class="text-blue-400 mr-3 mt-1">•</span>
+                        <span>Comet ve Atlas gibi AI tarayıcılar</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-400 mr-3 mt-1">•</span>
+                        <span>Cursor gibi agentic IDE'ler</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-400 mr-3 mt-1">•</span>
+                        <span>Claude ve Gemini gibi masaüstü agentlar</span>
+                    </li>
+                </ul>
+
+                <p>
+                    Bunlar basit verimlilik araçları değil — kurumsal sistemlere bağlanan, veri tüketen, kararlar alan ve çıktılar üreten otonom aktörler.
+                </p>
+
+                <div class="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-xl p-6 my-8">
+                    <p class="text-xl font-semibold text-white mb-2">
+                        Bildiğimiz tarayıcı ölüyor. Yaşasın AI agent.
+                    </p>
+                    <p class="text-gray-300">
+                        SaaS modeli de ölüyor. Web uygulamaları, insan kullanıcılar için değil, agentic etkileşim için tasarlanmış MCP sunucularına dönüşüyor.
+                    </p>
+                </div>
+
+                <p>
+                    Geleneksel güvenlik çözümleri, bir kez daha, bu paradigma değişimi göz önünde bulundurularak inşa edilmedi.
+                </p>
+
+                <p>
+                    Bu yüzden onlarca yıllık deneyimimizi işin içine kattık ve <strong class="text-blue-400">The AI Edge</strong>'i inşa ettik — Post-AI kurumu için tasarlanmış kapsamlı bir "agentic SASE platformu".
+                </p>
+
+                <h2 class="text-2xl font-bold text-white mt-12 mb-6">The AI Edge şunları sağlar:</h2>
+
+                <div class="space-y-4 mb-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <h3 class="font-semibold text-blue-400 mb-2">Veri Kaybı Önleme</h3>
+                        <p class="text-gray-400 text-base">AI agentlar aracılığıyla veri sızıntısına karşı kapsamlı koruma</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <h3 class="font-semibold text-blue-400 mb-2">Prompt Güvenliği ve Agent Bütünlüğü Koruması</h3>
+                        <p class="text-gray-400 text-base">Prompt enjeksiyonuna karşı koruma ve agent özgünlüğünü sağlama</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <h3 class="font-semibold text-blue-400 mb-2">Agent Güvenlik Durum Yönetimi</h3>
+                        <p class="text-gray-400 text-base">AI agentlar için güvenlik politikalarının sürekli değerlendirmesi ve uygulanması</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <h3 class="font-semibold text-blue-400 mb-2">Agentlar için Sıfır Güven Ağ Erişimi</h3>
+                        <p class="text-gray-400 text-base">Otonom AI sistemleri için güvenli, politika tabanlı bağlantı</p>
+                    </div>
+                </div>
+
+                <div class="bg-green-900/20 border border-green-500/30 rounded-xl p-6 my-8">
+                    <p class="text-gray-300 text-center">
+                        <strong class="text-green-400">API gateway yok, ortada bulut yok, iş akışı kesintisi yok, sürtünme yok</strong>
+                    </p>
+                    <p class="text-gray-300 text-center mt-4">
+                        Herhangi bir AI agent için. Herhangi bir MCP sunucusu için. Herhangi bir kullanıcı için. Herhangi bir cihaz için.
+                    </p>
+                </div>
+
+                <p class="text-xl font-semibold text-white mt-12">
+                    Bizi buraya getiren büyük değişimler için oradaydık. Ve Netzilo ile, gelecekte olanı inşa ediyoruz.
+                </p>
+
+                <!-- Video Links Section -->
+                <div class="mt-12 bg-slate-800/50 border border-slate-700 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">Gerçeği canlı olarak görün:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div>
+                                <a href="https://youtu.be/CWhSA1LQzVY" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">
+                                    Veri Kaybı Önleme Demosu
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div>
+                                <a href="https://youtube.com/watch?v=AlTBWoS2yig" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">
+                                    Dolaylı Prompt Enjeksiyon Önleme Demosu
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Blog -->
+            <div class="mt-12 text-center">
+                <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Blog'a Dön
+                </a>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold mb-4">AI destekli kurumunuzu güvence altına almaya hazır mısınız?</h3>
+                    <p class="text-gray-400 mb-6">
+                        The AI Edge'in Post-AI döneminde kuruluşunuzu nasıl koruyabileceğini keşfedin
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                            Bize Ulaşın
+                        </a>
+                        <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                            Ürünü Keşfedin
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo, kapsamlı bir Dijital Kurumsal İşyeri çözümü aracılığıyla kurumsal uç yeteneklerini uç nokta ortamlarına genişletir.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Hızlı Bağlantılar</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Ürün</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Çözümler</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Fiyatlandırma</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">Hakkımızda</a></li>
+                        <li><a href="../../legal/" class="text-gray-400 hover:text-white transition-colors">Yasal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">İletişim</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. Tüm hakları saklıdır.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Gizlilik Politikası</a>
+                        <a href="../../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Hizmet Şartları</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
