@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preventing Attacks Against AI Agents: Cursor & VS Code - Netzilo Blog</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="../tr/blog/" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors border border-gray-600 rounded-md hover:border-blue-400">
+                        TR
+                    </a>
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-sm font-semibold border border-red-600/30">
+                        Security Alert
+                    </span>
+                    <span class="ml-4 text-gray-500">November 14, 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Preventing Recently Disclosed Attacks Against AI Agents: <span class="gradient-text">Cursor & VS Code</span>
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">A Wake-Up Call</h2>
+                
+                <p>
+                    According to <a href="https://www.darkreading.com" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Dark Reading</a>, Cursor was compromised through a malicious extension that injected a harmful payload capable of exfiltrating sensitive data.
+                </p>
+
+                <p>
+                    Sound familiar? Consider these attack vectors:
+                </p>
+
+                <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-6 my-8">
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <span>A malicious extension injecting attack payloads</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <span>A rogue MCP server implanting malicious payloads</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-red-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <span>Remote code injection executing payloads</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    These are the same problems we've faced with web browsers for decades. The parallel is clear:
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <p class="text-xl font-bold text-blue-400 text-center mb-2">
+                        AI agents are the new browsers, and MCP servers are the new web servers.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Netzilo AI Edge & Layered Defense for AI Agents</h2>
+
+                <p>
+                    We designed Netzilo AI Edge with this new threat landscape in mind. Here's how its multi-layered defense architecture can prevent attacks like the Cursor compromise—right out of the box.
+                </p>
+
+                <h3 class="text-2xl font-bold text-blue-400 mt-12 mb-6">Layer 1: AI Detection and Response (AIDR)</h3>
+
+                <p>
+                    Similar to EDR (Endpoint Detection and Response) solutions, Netzilo AI Edge includes an endpoint component. Unlike inefficient remote gateway or cloud-based solutions, it monitors local MCP calls in real-time—including stdio-based servers such as filesystem and Node.js-based tools—directly on the endpoint where attacks occur.
+                </p>
+
+                <h4 class="text-xl font-semibold text-white mt-8 mb-4">Key capabilities:</h4>
+
+                <div class="space-y-4 mb-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div>
+                                <p><strong class="text-white">Real-time behavioral analysis</strong> using both static and dynamic detection methods</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div>
+                                <p><strong class="text-white">Tool call chain interception and advanced analysis</strong>, including enforcement of Meta's Rule of 2 (for details, see our blog on <a href="aidr-detecting-and-containing-ai-agent-threats.html" class="text-blue-400 hover:text-blue-300 underline">AIDR: Detecting and Containing AI Agent Threats</a>)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <div>
+                                <p><strong class="text-white">MCP reputation analysis</strong> with the ability to lock down MCP server usage to approved/whitelisted sources only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AIDR Image -->
+                <div class="my-12">
+                    <img src="../images/AIDR.png" alt="AIDR Behavior Analysis Rules" class="w-full rounded-xl border border-slate-700 shadow-2xl">
+                    <p class="text-sm text-gray-500 text-center mt-3">AIDR Behavior Analysis Rules</p>
+                </div>
+
+                <!-- MCP Image -->
+                <div class="my-12">
+                    <img src="../images/MCP.png" alt="Enforce Sanctioned AI Tools/MCP Servers" class="w-full rounded-xl border border-slate-700 shadow-2xl">
+                    <p class="text-sm text-gray-500 text-center mt-3">Enforce Sanctioned AI Tools/MCP Servers</p>
+                </div>
+
+                <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 my-8">
+                    <p class="text-white font-semibold text-center">
+                        Netzilo AIDR is the only endpoint-based agent behavior analysis system capable of intercepting and analyzing complete tool call chains with this level of sophistication.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-blue-400 mt-12 mb-6">Layer 2: AI Agent Isolation</h3>
+
+                <p>
+                    Browser isolation has long been used as a layered defense against attacks on traditional browsers. However, until now, no such solution existed for "the new browsers"—AI agents.
+                </p>
+
+                <p>
+                    Netzilo Workspace leverages local isolation technology to quarantine AI agents from the rest of the system and the broader enterprise network. This containment approach prevents lateral movement and limits the blast radius of any successful compromise.
+                </p>
+
+                <!-- Claude Desktop Image -->
+                <div class="my-12">
+                    <img src="../images/desktop.png" alt="Claude Desktop" class="w-full rounded-xl border border-slate-700 shadow-2xl">
+                    <p class="text-sm text-gray-500 text-center mt-3">Claude Desktop - Standard Configuration</p>
+                </div>
+
+                <!-- Claude Desktop Isolated Image -->
+                <div class="my-12">
+                    <img src="../images/isolated.png" alt="Claude Desktop Isolated" class="w-full rounded-xl border border-slate-700 shadow-2xl">
+                    <p class="text-sm text-gray-500 text-center mt-3">Claude Desktop - Isolated in Netzilo Workspace</p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-blue-400 mt-12 mb-6">Layer 3: Endpoint Security Posture Enforcement</h3>
+
+                <p>
+                    With Netzilo AI Edge, endpoint security posture can be enforced for every AI agent activity. This enables zero-trust enforcement with questions like:
+                </p>
+
+                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 my-8">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Can the AI agent download files from corporate SharePoint while DLP is disabled?</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Can the AI agent access corporate MCP servers if the endpoint's integrity has been breached?</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Can the AI agent access GitHub code repositories while unsanctioned MCP servers are in use?</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    These novel zero-trust capabilities bring enterprise-grade security controls to AI agent operations—a critical capability gap in today's security landscape.
+                </p>
+
+                <!-- Agentic Security Posture Image -->
+                <div class="my-12">
+                    <img src="../images/agentic.png" alt="Agentic Security Posture Enforcement" class="w-full rounded-xl border border-slate-700 shadow-2xl">
+                    <p class="text-sm text-gray-500 text-center mt-3">Agentic Security Posture Enforcement</p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Bottom Line</h2>
+
+                <p>
+                    As AI agents become increasingly integrated into enterprise workflows, they inherit the same attack surface that web browsers have carried for years. The difference? AI agents have direct access to sensitive code, data, and infrastructure—making the stakes even higher.
+                </p>
+
+                <p>
+                    Netzilo AI Edge provides the comprehensive, layered defense architecture needed to secure this new frontier.
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-green-900/20 border border-blue-500/30 rounded-xl p-8 my-12">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Ready to secure your AI agents?</h3>
+                    <p class="text-center mb-6">
+                        Give us a nudge if you'd like to get your hands on Netzilo AI Edge.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block text-center">
+                            Contact Us
+                        </a>
+                        <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block text-center">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Blog -->
+            <div class="mt-12 text-center">
+                <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back to Blog
+                </a>
+            </div>
+
+            <!-- Related Posts -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold mb-6">Related Posts</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="the-paradigm-shift-is-here-again.html" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500 transition-colors">
+                        <span class="text-sm text-blue-400">AI & Security</span>
+                        <h4 class="text-xl font-bold text-white mt-2 mb-2">The Paradigm Shift is here. Again.</h4>
+                        <p class="text-gray-400 text-sm">Building security for the Post-AI era</p>
+                    </a>
+                    <a href="aidr-detecting-and-containing-ai-agent-threats.html" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500 transition-colors">
+                        <span class="text-sm text-purple-400">AIDR</span>
+                        <h4 class="text-xl font-bold text-white mt-2 mb-2">AIDR: Detecting and Containing AI Agent Threats</h4>
+                        <p class="text-gray-400 text-sm">Behavioral detection meets containment</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
