@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Happens When AI Agents Become Your Users — And Your Attack Surface - Netzilo Blog</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-sm font-semibold border border-blue-600/30">
+                        AI & Security
+                    </span>
+                    <span class="ml-4 text-gray-500">January 15, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    What Happens When AI Agents Become Your Users — <span class="gradient-text">And Your Attack Surface</span>
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    For years, security teams built defenses around one simple idea: a user is a human. Someone typing, clicking, logging in, and making decisions that usually fit predictable patterns. That foundation is now shifting. AI agents are stepping into roles once held only by people. They request data, connect with apps, pass information between systems, and drive entire workflows with no human in the loop. This shift brings speed and scale, though it also expands your attack surface in ways that older security models do not fully recognize. As enterprises modernize, the key question becomes straightforward: what happens when AI, not people, becomes your user?
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">AI Agents Operate as Enterprise Users</h2>
+
+                <p>
+                    AI agents now interact with systems in ways that mirror real employees. They generate content, answer customers, read internal documents, pull data from APIs, and make autonomous decisions. That creates efficiency, though it also introduces a user type with no intuition for risk or policy.
+                </p>
+
+                <p>
+                    AI agents do not hesitate or question context. They do not understand sensitive information. They accept inputs at face value. And they act instantly. This means the identity layer, data layer, and application layer face a new form of automated activity that can be helpful or harmful depending on how it is secured.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Expanded Attack Surface From AI-Agent Activity</h2>
+
+                <p>
+                    When an AI agent plugs into your workflows, several new risk zones appear.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Prompt Layer Manipulation</h3>
+
+                <p>
+                    AI agents can be misled through malicious instructions hidden in emails, documents, webpages, or customer messages. This is known as indirect prompt injection. An attacker does not need direct access. They only need to influence what the agent reads.
+                </p>
+
+                <p>
+                    A single manipulated phrase can push an agent to reveal data, share internal links, or trigger automated actions. The Cybersecurity and Infrastructure Security Agency (CISA) recognizes these input-level manipulations as a rising form of AI-enabled threat.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Identity and Privilege Exposure</h3>
+
+                <p>
+                    Traditional identity systems were designed for humans. AI agents now receive API keys, tokens, and permissions like any other user. If those credentials leak, an attacker gains automated access that can operate quietly for long periods.
+                </p>
+
+                <p>
+                    Unlike humans, AI agents do not create natural red flags. They do not get tired. They do not slow down. This makes unusual behavior much harder to detect.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Multi-Agent Workflow Risk</h3>
+
+                <p>
+                    Many organizations chain multiple agents together. One gathers data, another processes it, and another posts the output. This chain accelerates operations, though it also means that one compromised agent can influence many.
+                </p>
+
+                <p>
+                    A poisoned dataset or manipulated output can travel through the entire workflow before anyone notices.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Data Overexposure Through Automation</h3>
+
+                <p>
+                    AI agents often have broad visibility. They summarize files, scan databases, and analyze dashboards. If their permissions are too wide, sensitive data becomes reachable through a single automated path. The National Institute of Standards and Technology (NIST) highlights this form of AI-driven access expansion in its AI Risk Management Framework.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why Traditional Security Models Struggle</h2>
+
+                <p>
+                    Legacy security approaches assume:
+                </p>
+
+                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 my-8">
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>Users move slowly</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>Behavior patterns are predictable</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>Decisions rely on human judgment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>Inputs are mostly trusted after authentication</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    AI agents break those assumptions. They move at machine speed. They scale automatically. They rely fully on input data. They produce actions without verifying the intent behind the instructions they receive.
+                </p>
+
+                <p>
+                    This creates a gap between traditional controls and AI-driven activity. Firewalls and identity tools continue to matter, though they are no longer enough to understand or restrict the actions of automated agents.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How Netzilo Positions AI Edge Security</h2>
+
+                <p>
+                    Netzilo's recent announcement introduces a solution built for this exact shift in enterprise behavior. The AI Edge framework secures AI activity from device to cloud without forcing organizations to redesign their entire environment.
+                </p>
+
+                <p>
+                    The platform focuses on:
+                </p>
+
+                <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Securing AI interactions</strong> – Every AI-to-app and AI-to-data connection receives inspection and protection.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">DLP for AI outputs</strong> – The system prevents unauthorized data from leaving through AI-generated responses.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Prompt-layer controls</strong> – It identifies and blocks malicious or manipulated instructions before an agent acts on them.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Network-level Zero Trust for AI agents</strong> – Agents receive identity verification and access segmentation across all devices and systems.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Continuous posture monitoring</strong> – The platform tracks changes in agent behavior, access patterns, and vulnerabilities in real time.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    The goal is to give enterprises a clear view of what their AI agents touch, what they process, and what risks appear as agents scale across operations.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How Enterprises Should Prepare</h2>
+
+                <p>
+                    Organizations adopting AI agents should take several direct steps.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Establish Visibility Into AI Activity</h3>
+
+                <p>
+                    You cannot secure what you cannot see. Identify:
+                </p>
+
+                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 my-8">
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>Every AI agent in your environment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>The systems they access</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>The data they handle</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">•</span>
+                            <span>The workflows they influence</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    This creates a baseline for policy and risk decisions.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Limit and Separate Agent Privileges</h3>
+
+                <p>
+                    AI agents should never share human accounts. They should not have broad access by default. Assign narrow, task-based permissions. Rotate tokens and restrict internal data exposure.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Secure Input Channels</h3>
+
+                <p>
+                    All untrusted content should be sanitized. Emails, documents, and web content often carry hidden instructions. Build controls that inspect and filter inputs before they reach your agents.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Monitor Agent Behavior Continuously</h3>
+
+                <p>
+                    Machine-driven activity can spike quickly. Watch for unexpected patterns such as new destinations, unusual timing, or a sudden increase in requests. Continuous monitoring reduces the window of risk.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Apply Zero Trust Principles to Agents</h3>
+
+                <p>
+                    Zero Trust was created for human users, though it applies equally to AI. Verify each request. Validate identity and intent. Block lateral movement. Segment access paths. Treat every agent as a high-impact user.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Future of the Enterprise Workforce</h2>
+
+                <p>
+                    AI agents will soon perform as much work as human staff in many organizations. They will run pipelines, deliver customer responses, process documentation, and manage internal data. Their influence will grow faster than any previous technology shift.
+                </p>
+
+                <p>
+                    With that growth comes responsibility. Enterprises must secure AI agents the same way they secure employees. They must understand what agents access, what decisions they make, and how those decisions affect the broader environment.
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <p class="text-gray-300">
+                        AI is not simply a tool now. It is a new class of user. And every new user type expands the attack surface.
+                    </p>
+                </div>
+
+                <p>
+                    Netzilo's AI Edge framework represents a practical response to this moment. It gives organizations a security layer that aligns with how AI actually behaves: fast, automated, and deeply integrated.
+                </p>
+
+                <p>
+                    The next wave of enterprise technology will be built on AI agents. The next wave of enterprise security must be built around them.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">1. How does an AI-edge security platform handle sudden spikes in cyber threats?</h3>
+                        <p class="text-gray-300">
+                            An AI-edge platform reacts in real time, adjusting to sudden threat spikes without slowing the network. It keeps scanning patterns, updates itself quickly, and maintains stability so organisations don't face disruption during high-risk moments.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">2. How can companies evaluate the risk level of each AI agent?</h3>
+                        <p class="text-gray-300">
+                            Businesses can assess risk by reviewing an agent's permissions, data visibility, workflow impact, and integration depth. High-impact agents with broad access or automation authority require stricter controls, monitoring, and isolation to prevent potential misuse.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">3. What makes AI-agent misconfigurations dangerous for enterprises?</h3>
+                        <p class="text-gray-300">
+                            A small configuration mistake, an open API, excessive permissions, or an unrestricted data pipeline can allow an AI agent to access or share information unintentionally. Misconfigurations amplify risk because agents act quickly and without human judgment.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">4. What role does continuous testing play in securing AI agents?</h3>
+                        <p class="text-gray-300">
+                            Regular testing, such as simulated injections, access validation, and workflow stress checks, helps uncover vulnerabilities early. Continuous evaluation ensures AI agents operate within safe limits and prevents issues from spreading through interconnected systems or pipelines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Blog -->
+            <div class="mt-12 text-center">
+                <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back to Blog
+                </a>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold mb-4">Ready to secure your AI agents?</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover how Netzilo AI Edge can protect your organization from AI agent threats
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                            Contact Us
+                        </a>
+                        <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                            Explore Product
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
