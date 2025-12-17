@@ -316,10 +316,13 @@
                         Ready to see Netzilo in action? Schedule a personalized demo with our security experts and discover how we can secure your third-party access and remote workforce.
                     </p>
                     
-                    <!-- HubSpot Meeting Embed -->
-                    <div class="max-w-4xl mx-auto bg-white rounded-lg p-4 shadow-2xl mb-8">
-                        <div class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/matt-ezberci/product-demo?embed=true"></div>
-                        <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                        <button onclick="openDemoModal()" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-md transition-colors inline-flex items-center justify-center cursor-pointer">
+                            Schedule Demo
+                            <svg class="ml-2 h-5 w-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </button>
                     </div>
 
                     <div class="flex flex-wrap justify-center items-center gap-8 text-blue-100">
@@ -348,6 +351,28 @@
 
     
     </main>
+
+    <!-- Demo Booking Modal -->
+    <div id="demoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+            <!-- Close button -->
+            <button onclick="closeDemoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <!-- Modal content -->
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Schedule Your Demo</h3>
+                <p class="text-gray-600 mb-6">Choose a time that works best for you to see Netzilo in action.</p>
+                
+                <!-- HubSpot Meeting Embed -->
+                <div class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/matt-ezberci/product-demo?embed=true"></div>
+                <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-slate-900 border-t border-slate-800">
@@ -462,6 +487,38 @@
                 mobileMenu.classList.toggle('hidden');
             }
         }
+        
+        // Demo Modal Functions
+        function openDemoModal() {
+            const modal = document.getElementById('demoModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+        
+        function closeDemoModal() {
+            const modal = document.getElementById('demoModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('demoModal');
+            if (event.target === modal) {
+                closeDemoModal();
+            }
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDemoModal();
+            }
+        });
         
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
