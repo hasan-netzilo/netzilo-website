@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Injection 2.0: The New Malware for the Post-AI Web - Netzilo Blog</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-sm font-semibold border border-purple-600/30">
+                        Prompt Injection
+                    </span>
+                    <span class="ml-4 text-gray-500">December 22, 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Prompt Injection 2.0: <span class="gradient-text">The New Malware</span> for the Post-AI Web
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    As AI slips deeper into everyday business work, a new kind of cyber risk is quietly showing up. One that old security tools just don't understand. Prompt Injection 2.0 is being called the latest malware of the AI age. Not code, not files, just poisoned instructions hiding in plain text.
+                </p>
+
+                <p>
+                    AI agents now read data, pull info, and trigger actions on their own. Like users. But without human judgment. That's where things break. Legacy DLP and WAF tools were never built to control how AI thinks or interprets language. They watch traffic. They scan patterns. They miss intent. This piece breaks down why that gap matters and why AI-aware security is no longer optional.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What Is Prompt Injection 2.0?</h2>
+                
+                <p>
+                    In the early days of generative AI, prompt injection was fairly basic. Attackers typed tricky prompts to confuse the model, override its rules, or pull sensitive data. Prompt Injection 2.0 goes further, and it's much harder to spot.
+                </p>
+
+                <p>
+                    Now the attack hides inside content AI already reads every day, like web pages, PDFs, emails, and even small bits of metadata. AI systems process this information to summarize, analyze, or take action, without stopping to question what they are being told, a behavior highlighted by IBM Think.
+                </p>
+
+                <div class="bg-slate-800/50 border border-yellow-500/30 rounded-xl p-6 my-8">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Critical Insight</h4>
+                            <p class="text-gray-300">
+                                There's nothing to click. No alerts show up. The AI just follows the hidden instructions without thinking. It's not code-based malware; it's language-based. Quiet, tricky, and easy to overlook.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How Indirect Prompt Injection Works</h2>
+
+                <p>
+                    At its core, indirect prompt injection exploits a fundamental limitation in current AI systems: they cannot distinguish between trusted internal instructions and untrusted external content. Industry groups like the OWASP Foundation have formally documented prompt injection as an application-layer risk in modern AI systems.
+                </p>
+
+                <p>Here's how it usually happens:</p>
+
+                <ul class="space-y-3 text-gray-300 list-disc pl-6 my-6">
+                    <li><strong class="text-white">Content Contamination:</strong> Attackers put hidden instructions in web pages, documents, or emails that AI will read. These can make the AI do things it shouldn't, share private info, or give wrong outputs.</li>
+                    <li><strong class="text-white">Hidden Payloads:</strong> The bad instructions are often sneaky. White text on white background, invisible Unicode characters, hidden comments, or weird encoding tricks. Humans might never notice, but AI reads them anyway.</li>
+                    <li><strong class="text-white">Workflow Triggering:</strong> Companies use AI to summarize docs, extract data, make reports, or call APIs. When the AI hits attacker-controlled content, it just follows the hidden instructions, usually without anyone noticing.</li>
+                </ul>
+
+                <p>
+                    Because these injections rely on the AI's tendency to trust input context rather than technical exploits like code execution over a network, they aren't easily caught by traditional defenses.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why Traditional DLP and WAFs Fall Short</h2>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">1. Legacy DLP Was Built for Data Patterns – Not Language Control</h3>
+
+                <p>
+                    Traditional Data Loss Prevention (DLP) tools are designed to prevent sensitive data from leaking, typically monitoring for known patterns like credit card numbers or specific keywords as they leave corporate systems. They do this after data movement, not before AI interprets input.
+                </p>
+
+                <p>Indirect prompt injection, on the other hand:</p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Lodges malicious instructions inside the data the AI is about to process (not necessarily sensitive content),</li>
+                    <li>Uses language semantics rather than fixed patterns,</li>
+                    <li>And often bypasses pattern-based detection entirely because the instructions are crafted to look harmless to humans.</li>
+                </ul>
+
+                <p>
+                    In other words, classic DLP can't see the command in the AI's thoughts until after damage is done.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">2. WAFs Only Inspect Web Traffic – not the AI Semantic Layer</h3>
+
+                <p>
+                    Web Application Firewalls (WAFs) were built to block known exploit signatures, SQL injection attempts, cross-site scripting (XSS), and malformed requests at the network edge. They provide perimeter protection based on predefined rulesets.
+                </p>
+
+                <p>Indirect prompt injection attacks don't behave as network exploits. They:</p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Ride inside perfectly normal content payloads,</li>
+                    <li>Use context and semantics that are meaningful only once ingested by an AI,</li>
+                    <li>And don't trigger typical anomaly patterns that WAFs are designed to block.</li>
+                </ul>
+
+                <div class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-red-400 mb-4">The Gap</h4>
+                    <p class="text-gray-300">
+                        A WAF might block a malicious script or a known exploit signature, but it won't stop an AI from reading a seemingly innocent sentence instructing it to share internal financial forecasts with an external email. The model doesn't see this as an exploit, just text.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Real Risk: AI Agents as Autonomous Malware Interpreters</h2>
+
+                <p>
+                    Modern enterprises are increasingly embedding AI agents into real workflows, summarization engines, autonomous assistants, recommendation bots, and even automated decision systems.
+                </p>
+
+                <p>These agents may:</p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Read internal documents,</li>
+                    <li>Pull data from APIs,</li>
+                    <li>Make decisions that trigger actions (like sending messages, updating records, or executing scripts).</li>
+                </ul>
+
+                <div class="bg-slate-800/50 border border-yellow-500/30 rounded-xl p-6 my-8">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">The Result</h4>
+                            <p class="text-gray-300">
+                                When an agent ingests an indirect prompt injection, it acts on it as if it were a legitimate instruction. A trusted internal system performs unauthorized actions, essentially becoming an unwitting accomplice in its own compromise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">New Security Models for the AI Era</h2>
+
+                <p>To defend against Prompt Injection 2.0, organizations must rethink security from the bottom up. This includes:</p>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Semantic Input Filtering</h4>
+                        <p class="text-gray-300">
+                            Instead of treating text as data, security systems need AI-aware filters that inspect semantics and intent, flagging inputs designed to manipulate agent behavior rather than serve the business purpose.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Isolation of AI Contexts</h4>
+                        <p class="text-gray-300">
+                            Strict separation between trusted system instructions and external content is crucial. Some emerging work focuses on sandbox contexts or sanitization layers that prevent hidden instructions from mixing with trusted prompts.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Real-Time Monitoring & Behavioral Controls</h4>
+                        <p class="text-gray-300">
+                            Rather than relying on pattern matching alone, defenders must monitor AI agent behavior, looking for anomalies that suggest an agent has acted on a hidden instruction or deviated from expected workflows.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Zero Trust for AI Agents</h4>
+                        <p class="text-gray-300">
+                            Treat each AI agent as a potential risk factor. Apply zero trust principles, validate identity, restrict tool access, and enforce least privilege, even for automated workloads.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Netzilo's Approach: Securing the Post-AI Edge</h2>
+
+                <p>
+                    Acknowledging this new threat landscape, solutions like Netzilo's AI Edge Security platform are being developed specifically for the post-AI web. These architectures focus on agent-centric protection, including:
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-green-900/20 border border-blue-500/30 rounded-xl p-8 my-8">
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Prompt layer controls</strong> that detect and block malicious or manipulated instructions,</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">DLP tailored to AI outputs</strong> instead of human data exfiltration patterns,</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Continuous monitoring</strong> of AI agent posture and activity across workflows,</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span><strong class="text-white">Zero-trust access policies</strong> that treat AI agents like users with identity and context verification.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    By securing interactions where they happen, at the edge where AI agents connect to applications and data, organizations gain visibility and control that legacy tools cannot provide.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Conclusion</h2>
+
+                <p>
+                    Prompt Injection 2.0 isn't just some theoretical thing. It's real, growing, and tied to how AI actually works in businesses, reading content, making decisions, automating stuff. Old security tools might stop leaks or block bad traffic, but they can't stop language tricks that fool AI.
+                </p>
+
+                <p>
+                    If AI agents are now part of your workforce, they need dedicated security that understands how they think and how attackers exploit their blind spots. Modern defenses must operate at the semantic layer and enforce security before an instruction alters behavior, not after it's too late.
+                </p>
+
+                <p>
+                    The future of enterprise security isn't just about protecting data. It's about governing how AI interprets and acts on information, and stopping indirect threats before they can be consumed.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">1. What exactly is indirect prompt injection?</h4>
+                        <p class="text-gray-300">
+                            Indirect prompt injection embeds malicious instructions in external data that an AI system ingests during workflows, causing unintended actions when the AI processes it.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">2. Can traditional security tools detect prompt injections?</h4>
+                        <p class="text-gray-300">
+                            No. Legacy DLP and WAFs aren't designed to analyze language semantics or control how AI interprets instructions before execution.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">3. Why are AI agents more vulnerable than traditional software?</h4>
+                        <p class="text-gray-300">
+                            AI agents interpret text as instructions without distinguishing context or trust levels, expanding the attack surface beyond what rule-based defenses can manage.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">4. How should enterprises defend against Prompt Injection 2.0?</h4>
+                        <p class="text-gray-300">
+                            Use AI-aware controls: semantic filtering, behavior monitoring, zero trust for agents, and security architectures built around AI workflows rather than network perimeters.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">See Also</h2>
+
+                <div class="grid grid-cols-1 gap-6 my-8">
+                    <a href="mcp-security-problem.html" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">The MCP Security Problem Nobody's Talking About Yet</h4>
+                        <p class="text-gray-400 text-sm">Learn about MCP vulnerabilities, tool poisoning, and why gatewayless defense is becoming essential.</p>
+                    </a>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="mt-12 text-center">
+                    <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-green-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Ready to protect your AI agents from prompt injection attacks?</h3>
+                        <p class="text-gray-400 mb-6">
+                            Discover how Netzilo's AI Edge Security provides semantic filtering and behavioral controls to defend against Prompt Injection 2.0
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Contact Us
+                            </a>
+                            <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Explore Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
