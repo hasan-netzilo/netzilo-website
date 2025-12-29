@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic SASE: A New Edge for a New Era of Autonomous Work - Netzilo Blog</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-cyan-600/20 text-cyan-400 rounded-full text-sm font-semibold border border-cyan-600/30">
+                        Agentic SASE
+                    </span>
+                    <span class="ml-4 text-gray-500">December 29, 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Agentic SASE: <span class="gradient-text">A New Edge for a New Era</span> of Autonomous Work
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    Businesses are no longer just connecting people. They are connecting systems that think, act, and move on their own. AI agents are already inside enterprise environments. Reading documents, calling APIs, moving data, and making decisions without asking anyone first. This is not the future. It's already happening. It's creating a problem that most security models were never built to handle.
+                </p>
+
+                <p>
+                    Traditional network security was built around humans, logins, devices, and locations. Now, AI agents don't behave like people. They don't pause. They don't doubt. They don't sleep. They just execute. That's why Agentic Secure Access Service Edge, or Agentic SASE, matters now. It's a response to a very real shift in how work gets done.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What Is SASE – The Foundation</h2>
+                
+                <p>
+                    Before talking about agentic SASE, it helps to slow down and understand regular SASE first.
+                </p>
+
+                <p>
+                    Secure Access Service Edge (SASE) brings networking and security together into one cloud-based setup. Instead of sending traffic all the way back to a central data center, security happens closer to the work, like near users, near devices. This makes things faster and reduces delays.
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-blue-400 mb-4">Traditional SASE Components</h4>
+                    <p class="text-gray-300 mb-3">SASE usually includes:</p>
+                    <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                        <li>Smart traffic routing through SD-WAN</li>
+                        <li>Identity-based access using Zero Trust</li>
+                        <li>Protection for web and cloud apps</li>
+                        <li>Cloud firewalls</li>
+                        <li>Data loss prevention to keep sensitive information from slipping out</li>
+                    </ul>
+                </div>
+
+                <p>
+                    This setup makes remote work and cloud apps easier to manage without opening new security gaps. In many cases, SASE replaces old VPNs and fixed perimeter firewalls with controls that adapt to context, user identity, and real behavior across the entire network.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why Traditional SASE Needs an Upgrade</h2>
+
+                <p>
+                    Traditional SASE was built to secure human users, people logging in from laptops, mobile devices, or branch offices. But today, a new category of "user" is emerging: AI agents.
+                </p>
+
+                <p>
+                    AI agents are software entities that operate autonomously, reading documents, querying APIs, generating responses, executing workflows, and making decisions without direct human input. Many enterprises are already seeing AI agents generate massive amounts of traffic and interact with internal systems as if they were just another user. In fact, some industry telemetry suggests AI agents now account for a substantial share of internet activity.
+                </p>
+
+                <div class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-red-400 mb-4">This shift fundamentally changes the security perimeter:</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <span>Agents don't behave like humans; they don't hesitate, ask for clarification, or follow predictable patterns</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <span>They operate continuously and at machine speed</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <span>Traditional controls often cannot detect or understand agent behavior</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-300 mt-4">
+                        Legacy security models assume predictable human intent and manual interactions, assumptions that fail spectacularly in the face of autonomous workflows.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Enter Agentic SASE – A New Paradigm</h2>
+
+                <p>
+                    Agentic SASE extends the SASE framework to secure not just people and devices but autonomous AI agents themselves. It recognizes that intelligent software has become both a critical productivity tool and a potential attack vector.
+                </p>
+
+                <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Leading the Way</h4>
+                            <p class="text-gray-300">
+                                One of the leading examples of this shift is Netzilo's AI Edge platform, which represents a new breed of agentic SASE technology designed specifically for the Post-AI enterprise, where AI agents, not just human users, are first-class participants in business operations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Core Principles of Agentic SASE</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">1. Identity-Driven Access for Agents</h3>
+                        <p class="text-gray-300">
+                            Each AI agent gets its own identity and access profile. Just like a person, the agent has to prove who it is and what it can do before it can access anything, all controlled with zero-trust rules.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">2. Behavioral Awareness and Monitoring</h3>
+                        <p class="text-gray-300">
+                            AI agents don't always follow human logic. Agentic SASE tracks how an agent behaves over time, looking for anomalies or risk patterns that indicate compromise.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">3. Data-Aware Protection</h3>
+                        <p class="text-gray-300">
+                            Autonomous agents can generate outputs automatically. Agentic SASE applies Data Loss Prevention (DLP) to outgoing responses or actions, stopping sensitive information from leaking inadvertently or maliciously.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">4. Prompt & Input Integrity Controls</h3>
+                        <p class="text-gray-300">
+                            Malicious inputs, like hidden instructions embedded in documents or emails, can trick AI agents into performing harmful actions. Agentic SASE frameworks include prompt security to prevent indirect prompt injection and similar attacks.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">5. Posture and Compliance Management</h3>
+                        <p class="text-gray-300">
+                            Just like endpoint posture checks for laptops, agentic SASE continuously evaluates agent software versions, permission scopes, and compliance profiles, adjusting access or isolating agents as needed.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How Agentic SASE Redefines the Network Perimeter</h2>
+
+                <p>
+                    Traditional security perimeters were static: corporate data centers, office networks, and VPN gateways defined "inside vs. outside." With cloud, mobility, and now autonomous agents, that model no longer holds.
+                </p>
+
+                <p>
+                    Agentic SASE reshapes the perimeter around identity, behavior, and risk, not location or device. It treats every connection, human or machine, as dynamically outside until proven safe. This approach:
+                </p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Shrinks the attack surface by verifying each request before granting access</li>
+                    <li>Improves visibility into automated workflows that touch sensitive data</li>
+                    <li>Prevents lateral movement even if an agent is compromised</li>
+                    <li>Supports hybrid and distributed operations without bridging blind spots</li>
+                </ul>
+
+                <p>
+                    By fusing identity-centric access controls with real-time risk signals and adaptive enforcement, agentic SASE builds a secure fabric that evolves with the enterprise.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Business Benefits of Agentic SASE</h2>
+
+                <div class="space-y-4 my-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mr-4">
+                            1
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Safer Autonomous Productivity</h4>
+                            <p class="text-gray-300">Companies can deploy AI agents to automate workflows from data analytics to customer support without fear of unauthorized data access. Agentic SASE curbs risky behavior and enforces policy compliance.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mr-4">
+                            2
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Better Alignment with Zero Trust</h4>
+                            <p class="text-gray-300">Zero Trust assumes no implicit trust. Agentic SASE extends this to machines too, ensuring every access request, whether human or AI, is authenticated and authorized.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mr-4">
+                            3
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Reduced Operational Risk</h4>
+                            <p class="text-gray-300">Automated AI tasks operate at high speed. Security gaps that might take days for humans to exploit can happen in seconds with agents. Agentic SASE closes these gaps by applying real-time governance and response.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mr-4">
+                            4
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Compliance & Regulatory Support</h4>
+                            <p class="text-gray-300">Data rules are getting stricter. Companies need to keep tight control, especially over automated processes. Agentic SASE gives logs, checks, and trails that help compliance teams stay on top.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Practical Example: Securing an AI-Driven Workflow</h2>
+
+                <p>
+                    A healthcare provider using AI agents to process patient records, summarize clinical notes, and generate billing codes. Without agentic controls:
+                </p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Agents might inadvertently expose protected health information.</li>
+                    <li>Compromised prompts could lead to unauthorized access to patient data.</li>
+                    <li>Automated outputs might transfer sensitive data outside approved channels.</li>
+                </ul>
+
+                <div class="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-green-400 mb-4">With an agentic SASE layer:</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>The system verifies each agent's identity and permissions.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>DLP policies prevent PHI leaks.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Behavioral monitoring flags unusual activity.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Prompt integrity safeguards keep external influences from derailing workflows.</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-300 mt-4 font-semibold">
+                        This guarantees productivity and compliance, a major win for decision-makers.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Challenges to Adoption</h2>
+
+                <p>Agentic SASE is powerful, but adoption isn't automatic:</p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li><strong class="text-white">Legacy infrastructure inertia</strong> – many organizations still rely on VPNs or siloed security tools.</li>
+                    <li><strong class="text-white">Skill gaps</strong> – IT teams must understand autonomous agents and threat models.</li>
+                    <li><strong class="text-white">Integration complexity</strong> – agentic frameworks must plug into existing identity and access management systems.</li>
+                </ul>
+
+                <p>
+                    Success depends on leadership commitment, cross-team alignment, and vendor choice.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Future of Network Security</h2>
+
+                <p>
+                    As enterprises embrace AI, security must evolve beyond human-centric models. Agentic SASE isn't just a buzzword; it's a necessary evolution of secure access frameworks to meet the needs of machine-driven productivity. Organizations that adopt agentic SASE early will be better positioned to balance automation with risk control.
+                </p>
+
+                <p>
+                    For businesses seeking to enable both innovation and trust, agentic SASE offers a resilient, scalable, and future-ready foundation. Enable innovation safely with Netzilo's agentic SASE, secure, scalable, and ready for the future.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">1. What makes agentic SASE different from traditional SASE?</h4>
+                        <p class="text-gray-300">
+                            Agentic SASE adds autonomous AI agents as first-class entities in secure access models, applying identity, behavior, and data controls tailored to machine-led workflows, beyond human-only SASE assumptions.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">2. Do AI agents actually change network security needs?</h4>
+                        <p class="text-gray-300">
+                            Yes. Autonomous agents operate at machine speed and can interact with systems differently from humans, generating new attack surfaces that require adaptive security and governance.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">3. Can agentic SASE help with regulatory compliance?</h4>
+                        <p class="text-gray-300">
+                            Absolutely. Enforcing data protection policies and logging agent actions, it supports audits, privacy laws, and internal governance mandates.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">4. How does agentic SASE tie into Zero Trust principles?</h4>
+                        <p class="text-gray-300">
+                            It extends Zero Trust to machines, verifying identity, limiting permissions, and continuously assessing risk for every access request.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">You Also Want to Read:</h2>
+
+                <div class="grid grid-cols-1 gap-6 my-8">
+                    <a href="mcp-security-problem.html" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">The MCP Security Problem Nobody's Talking About Yet</h4>
+                        <p class="text-gray-400 text-sm">Learn about MCP vulnerabilities, tool poisoning, and why gatewayless defense is becoming essential for securing AI agents.</p>
+                    </a>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="mt-12 text-center">
+                    <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-green-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Ready to implement Agentic SASE for your enterprise?</h3>
+                        <p class="text-gray-400 mb-6">
+                            Discover how Netzilo's AI Edge platform delivers agentic SASE with identity-driven access, behavioral monitoring, and Zero Trust for autonomous agents
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Contact Us
+                            </a>
+                            <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Explore Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
