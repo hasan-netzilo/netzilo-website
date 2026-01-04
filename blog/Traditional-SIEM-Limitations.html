@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inside the Mind of an AI Agent: Why Traditional SIEM and Endpoint Tools Are Blind - Netzilo Blog</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-orange-600/20 text-orange-400 rounded-full text-sm font-semibold border border-orange-600/30">
+                        AI Observability
+                    </span>
+                    <span class="ml-4 text-gray-500">January 4, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Inside the Mind of an AI Agent: <span class="gradient-text">Why Traditional SIEM and Endpoint Tools Are Blind</span>
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    Artificial intelligence is no longer just a feature inside applications. It is becoming an active participant. Traditional security tools like SIEM and endpoint monitoring were built for people, not autonomous systems. Today, AI agents read data, make decisions, call tools, and act for businesses often without human involvement. They log into systems. They access APIs. They trigger workflows. Sometimes, they do all of this without any humans in the loop. This shift is powerful. But it also creates a serious security gap.
+                </p>
+
+                <p>
+                    This article explains why traditional SIEM and endpoint tools are blind to AI agent behavior, how AI agents fundamentally differ from human endpoints, and what modern observability and posture management must look like to keep organizations secure. The perspective aligns with the emerging AI-edge security model highlighted by Netzilo.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What Makes AI Agents Fundamentally Different from Human Endpoints</h2>
+                
+                <p>
+                    Human users behave in fairly predictable ways. They log in during work hours. They use a limited number of applications. Their actions follow familiar patterns. Security tools rely on this predictability.
+                </p>
+
+                <p>
+                    AI agents are different. They do not think like humans. They do not pause. They do not have work hours. They operate continuously, across systems, often making decisions dynamically based on inputs that change in real time.
+                </p>
+
+                <div class="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-red-400 mb-4">Key differences that matter for security:</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <div>
+                                <strong class="text-white">AI agents act autonomously</strong><br>
+                                <span>Once deployed, an agent can execute tasks without human approval for each action. Traditional tools assume a user is always behind the keyboard.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <div>
+                                <strong class="text-white">They use tools, not just applications</strong><br>
+                                <span>AI agents call APIs, scripts, cloud services, and internal systems directly. These interactions often bypass traditional endpoint visibility.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <div>
+                                <strong class="text-white">Their behavior changes over time</strong><br>
+                                <span>An agent can adapt based on new data, prompts, or goals. Static security rules struggle to keep up.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            <div>
+                                <strong class="text-white">Intent is invisible</strong><br>
+                                <span>A SIEM may record what happened, but not why the agent decided to do it.</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="text-gray-300 mt-4">
+                        This is not malicious by default. But it is risky if security teams cannot see, understand, or control agent actions.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Limitations of Traditional SIEM and Endpoint Tools</h2>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">1. Data Overload But No Meaningful Insight</h3>
+                
+                <p>
+                    SIEM platforms were already struggling before AI agents emerged. They ingest massive volumes of logs and events, generating endless alerts. Many are false positives. This leads to alert fatigue. When AI agents operate quietly through APIs and backend services, their actions may not generate recognizable endpoint signals at all. The result? Critical activity goes unnoticed.
+                </p>
+
+                <p>
+                    This problem mirrors broader concerns raised by the National Institute of Standards and Technology (NIST) around modern system complexity outpacing traditional security monitoring models.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">2. Context Void – Outcomes Without Intent</h3>
+                
+                <p>
+                    Endpoint detection systems can highlight suspicious process executions or file changes, but they can't reveal why an action occurred. Without visibility into an AI agent's internal decision process, SIEM and endpoint tools simply see an anomalous event: not the full narrative leading up to it. This lack of correlation between intent and action limits investigations and impedes response.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">3. Slow and Reactive, Not Adaptive</h3>
+                
+                <p>
+                    SIEM and endpoint systems are largely reactive. They alert after something happens. AI agents operate at machine speed. By the time an alert fires, the agent may have already completed the task, moved data, or triggered downstream actions. Speed matters. And legacy tools are not fast enough.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">4. Insufficient Visibility Across Hybrid Environments</h3>
+                
+                <p>
+                    AI agents often operate across cloud platforms, SaaS tools, internal systems, and external APIs. Traditional endpoint-centric models break down in these hybrid environments. As noted by the Cybersecurity and Infrastructure Security Agency (CISA), modern security requires visibility that extends beyond devices to identities, access paths, and behavior. Without agent-aware intelligence, security teams are left guessing which events matter. That increases risk instead of reducing it.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What Observability and Posture Management Must Look Like in the AI Era</h2>
+
+                <p>
+                    Security teams now need visibility that extends beyond logs and traditional endpoint events. They require systems that understand agent behavior, including prompts, decision APIs, tools invoked, and why an action was taken. This is where AI-native observability and Security Posture Management come into play.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">AI-Native Observability</h3>
+
+                <p>AI observability goes beyond infrastructure metrics. It answers simple but critical questions:</p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>What is the agent trying to do?</li>
+                    <li>What inputs did it receive?</li>
+                    <li>Which tools did it use?</li>
+                    <li>Was the behavior expected?</li>
+                </ul>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-blue-400 mb-4">This requires visibility into:</h4>
+                    <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                        <li>Prompts and instructions</li>
+                        <li>Tool usage</li>
+                        <li>Data access patterns</li>
+                        <li>Behavioral changes over time</li>
+                    </ul>
+                    <p class="text-gray-300 mt-4 font-semibold">
+                        Observability must understand agent behavior, not just system activity.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">AI Security Posture Management</h3>
+
+                <p>Posture management for AI agents is about readiness and control.</p>
+
+                <p>It focuses on:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>What permissions agents have</li>
+                    <li>What data they can access</li>
+                    <li>Where they are allowed to operate</li>
+                    <li>How their behavior is monitored continuously</li>
+                </ul>
+
+                <div class="bg-slate-800/50 border border-yellow-500/30 rounded-xl p-6 my-8">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Dynamic and Adaptive</h4>
+                            <p class="text-gray-300">
+                                Unlike static security rules, posture management must adapt as agents evolve. This mirrors how organizations moved from static network security to Zero Trust. The same shift is now happening for AI.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Netzilo's "AI Edge": Bridging the Blind Spot</h2>
+
+                <p>
+                    With the rise of AI-driven workflows, companies like Netzilo are pioneering new models designed for AI agents. Netzilo's AI Edge platform represents a shift from legacy security assumptions to an agent-first approach. According to the company's announcement, the platform delivers real-time protection for AI agent interactions, securing everything from prompt security and agent integrity to Zero Trust access and continuous posture monitoring without disrupting workflows.
+                </p>
+
+                <p>
+                    The AI Edge platform is specifically built for a world where autonomous agents are not anomalies but standard enterprise users. It acknowledges that AI agents now generate an increasing share of network traffic and interact directly with internal systems in ways that traditional tools cannot track or control.
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-green-900/20 border border-blue-500/30 rounded-xl p-8 my-8">
+                    <h4 class="text-xl font-bold text-blue-400 mb-4">AI Edge Platform Capabilities</h4>
+                    <p class="text-gray-300 mb-4">By combining AI-aware observability with automated posture management, platforms like AI Edge close gaps left open by SIEM and endpoint tools. They ensure that:</p>
+                    <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                        <li>Agent activities are visible</li>
+                        <li>Their intent, tool use, and outputs are governed</li>
+                        <li>Actions are logged and enforceable under modern security policies</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why the Future of Security Must Be Agent-Aware</h2>
+
+                <p>
+                    Enterprises that try to retrofit legacy toolsets to handle autonomous agents will always be one step behind. Traditional SIEM and endpoint tools lack the semantic understanding and dynamic adaptability needed to interpret AI behaviors. When security is blind to intent and correlates only outcomes, teams are left reacting after incidents occur instead of preventing them proactively.
+                </p>
+
+                <p>
+                    The solutions of tomorrow will integrate agent-level visibility with continuous monitoring and adaptive controls. They will combine principles of Zero Trust, real-time observability, and AI-native policy enforcement to protect modern digital workplaces. This isn't just an upgrade, it's a fundamental rethinking of how security should function in an AI-driven world.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">1. What is the primary limitation of traditional SIEM systems in the age of AI agents?</h4>
+                        <p class="text-gray-300">
+                            Traditional SIEM systems are built to collect logs and match events. They can show what happened, but not why it happened. AI agents make decisions on their own, and SIEM tools cannot see that intent or reasoning, which creates visibility gaps.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">2. How does AI-native security observability differ from legacy monitoring tools?</h4>
+                        <p class="text-gray-300">
+                            Legacy monitoring focuses on system activity and logs. AI-native observability looks at agent behavior. It tracks inputs, decisions, and tool usage, giving security teams real context instead of raw data.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">3. What role does AI Security Posture Management play in modern cybersecurity?</h4>
+                        <p class="text-gray-300">
+                            AI Security Posture Management helps organizations stay in control of AI agents. It continuously checks access, behavior, and permissions, adjusting security as agents change and reducing risk over time.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">4. Why can't endpoint security tools alone secure AI agent behavior?</h4>
+                        <p class="text-gray-300">
+                            Endpoint tools only see what happens on a device. AI agents operate across cloud services, APIs, and systems. Their actions often never touch a traditional endpoint, making endpoint-only security incomplete.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">You May Also Want to Read:</h2>
+
+                <div class="grid grid-cols-1 gap-6 my-8">
+                    <a href="What-is-Agentic-SASE.html" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">Agentic SASE: A New Edge for a New Era of Autonomous Work</h4>
+                        <p class="text-gray-400 text-sm">Discover why Agentic SASE is the necessary evolution to secure autonomous AI workflows in the enterprise.</p>
+                    </a>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="mt-12 text-center">
+                    <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-green-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Ready to gain visibility into your AI agents?</h3>
+                        <p class="text-gray-400 mb-6">
+                            Discover how Netzilo's AI Edge platform provides AI-native observability and posture management to secure autonomous agents
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Contact Us
+                            </a>
+                            <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Explore Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="road" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
