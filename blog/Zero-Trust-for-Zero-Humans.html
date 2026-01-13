@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Trust for Zero Humans: Redefining ZTNA in a Post-AI Enterprise - Netzilo Blog</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-indigo-600/20 text-indigo-400 rounded-full text-sm font-semibold border border-indigo-600/30">
+                        Zero Trust
+                    </span>
+                    <span class="ml-4 text-gray-500">January 13, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Zero Trust for Zero Humans: <span class="gradient-text">Redefining ZTNA</span> in a Post-AI Enterprise
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    Artificial intelligence has quietly changed the rules of enterprise security. Not because humans disappeared. But because they are no longer the only ones accessing critical systems. Today's enterprise is full of non-human actors. AI agents. Autonomous developer tools. Background services. API-driven workloads. Machine identities that never log out.
+                </p>
+
+                <p>
+                    Traditional Zero Trust Network Access (ZTNA) was not built for this reality. This is where the idea of Zero Trust for Zero Humans emerges and where Netzilo is redefining how ZTNA works in a post-AI enterprise.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Enterprise No Longer Has a Human Perimeter</h2>
+                
+                <p>
+                    The enterprise no longer operates around a human perimeter. For years, security models were built on a simple assumption: a person signs in, a person requests access, and a person creates risk. Identity, authentication, and monitoring were all designed around human behavior. That structure worked when employees were the primary users of systems and data.
+                </p>
+
+                <p>Modern enterprises now rely on:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>AI agents performing tasks autonomously</li>
+                    <li>DevOps pipelines deploy code without human approval</li>
+                    <li>Autonomous monitoring tools making real-time changes</li>
+                    <li>Machine-to-machine communication across clouds and edges</li>
+                </ul>
+
+                <div class="bg-slate-800/50 border border-yellow-500/30 rounded-xl p-6 my-8">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">The Problem</h4>
+                            <p class="text-gray-300">
+                                These identities do not use browsers. They do not respond to MFA prompts. They do not "log in" like employees. Still, they touch important systems every day. Databases. APIs. Production tools. Sensitive workloads. All of it. And that's the problem. Security built only for humans just doesn't hold up anymore.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What Is Zero Trust Network Access (ZTNA)?</h2>
+
+                <p>Zero Trust Network Access, or ZTNA, follows one basic rule:</p>
+
+                <div class="text-center my-8 p-6 bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/30 rounded-xl">
+                    <p class="text-2xl font-bold text-white">Never trust. Always verify.</p>
+                </div>
+
+                <p>Instead of granting broad network access, ZTNA:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Verifies identity before access</li>
+                    <li>Limits access to only what is required</li>
+                    <li>Continuously validates trust during sessions</li>
+                </ul>
+
+                <p>
+                    ZTNA replaced VPNs for many organizations because it reduced lateral movement and limited blast radius. Most ZTNA platforms still assume a human user behind every request. That assumption is now a liability.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Rise of Non-Human Identities</h2>
+
+                <p>Non-human identities now outnumber human users in many enterprises.</p>
+
+                <p>These include:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>AI copilots interacting with internal APIs</li>
+                    <li>Autonomous agents managing cloud resources</li>
+                    <li>CI/CD tools pushing production changes</li>
+                    <li>Edge workloads communicating without user input</li>
+                </ul>
+
+                <p>
+                    As per National Institute of Standards and Technology (NIST), machine identities now represent one of the fastest-growing attack surfaces in Zero Trust architectures. But a lot of companies still just throw static passwords at them or give them too much access. That's a problem. It creates risk nobody really sees until something goes wrong.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why Traditional ZTNA Breaks in an AI-Driven Environment</h2>
+
+                <p>Classic ZTNA models struggle with non-human access for three reasons.</p>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-red-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">1. Identity Without Context</h3>
+                        <p class="text-gray-300 mb-3">AI agents do not behave like people.</p>
+                        <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                            <li>They act at machine speed.</li>
+                            <li>They scale instantly.</li>
+                            <li>They can be replicated or modified automatically.</li>
+                        </ul>
+                        <p class="text-gray-300 mt-3">Human-centric identity checks fail to capture this behavior.</p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-red-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">2. Static Trust Models</h3>
+                        <p class="text-gray-300">
+                            Many ZTNA systems rely on static policies. But AI tools change behavior based on data, prompts, or environmental triggers. Static trust becomes blind trust.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-red-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-4">3. Limited Visibility at the Edge</h3>
+                        <p class="text-gray-300">
+                            When AI workloads move closer to the edge, traditional security stacks lose visibility. This creates gaps that attackers can exploit, especially in machine-to-machine traffic.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Zero Trust for Zero Humans: A New Security Reality</h2>
+
+                <p>
+                    Zero Trust for Zero Humans does not mean removing people from security decisions. It means designing Zero Trust architectures that do not rely on human behavior at all.
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-900/20 to-green-900/20 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <h4 class="text-xl font-bold text-blue-400 mb-4">In this model:</h4>
+                    <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                        <li>Every request is evaluated, regardless of who or what makes it</li>
+                        <li>Identity is verified continuously, not once</li>
+                        <li>Trust is contextual, dynamic, and revocable</li>
+                    </ul>
+                    <p class="text-gray-300 mt-4">
+                        This is the foundation of post-AI enterprise security. And this is where Netzilo's approach stands apart.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How Netzilo Redefines ZTNA for Non-Human Actors</h2>
+
+                <p>
+                    Netzilo approaches Zero Trust from the edge outward, not from the user inward. Instead of forcing AI agents and autonomous tools into human-centric security flows, Netzilo builds ZTNA around behavior, context, and intent.
+                </p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Identity Beyond Users</h3>
+
+                <p>Netzilo treats AI agents, tools, and services as first-class identities.</p>
+
+                <p>Each identity is evaluated based on:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Purpose of access</li>
+                    <li>Runtime behavior</li>
+                    <li>Environment and execution context</li>
+                </ul>
+
+                <p>This removes the need for shared secrets or long-lived credentials.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Continuous Trust Evaluation</h3>
+
+                <p>Access is not granted once and forgotten.</p>
+
+                <p>Netzilo continuously reassesses trust based on:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Behavioral consistency</li>
+                    <li>Access patterns</li>
+                    <li>Environmental risk signals</li>
+                </ul>
+
+                <p>If behavior changes, access changes with it.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Edge-Native Security</h3>
+
+                <p>Netzilo enforces Zero Trust controls directly at the edge.</p>
+
+                <p>This matters because:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>AI workloads increasingly operate outside traditional perimeters</li>
+                    <li>Latency matters for autonomous systems</li>
+                    <li>Security must move at machine speed</li>
+                </ul>
+
+                <p>Edge-based ZTNA ensures enforcement happens where decisions are made.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why This Matters for Business Leaders</h2>
+
+                <p>Security decisions are no longer purely technical.</p>
+
+                <p>They affect:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Operational resilience</li>
+                    <li>Regulatory compliance</li>
+                    <li>AI governance</li>
+                    <li>Brand trust</li>
+                </ul>
+
+                <p>
+                    According to guidance from the Cybersecurity and Infrastructure Security Agency (CISA), Zero Trust adoption is critical for protecting modern digital infrastructure against automated and AI-driven threats. Organizations that ignore non-human access risk creating invisible attack paths.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Practical Use Cases in a Post-AI Enterprise</h2>
+
+                <p>
+                    Zero Trust for Zero Humans is not a theory or future concept. It supports real operational needs that enterprises are dealing with today. As AI and automation expand, security must adapt in ways that do not slow the business down.
+                </p>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Securing AI Agents</h4>
+                        <p class="text-gray-300">
+                            AI tools often need deep access to internal systems to function properly. That access creates risk if it is not tightly controlled. Netzilo ensures AI agents only reach approved resources, prevents them from expanding privileges on their own, and continuously monitors their behavior. This keeps AI productive without allowing it to become an unchecked security liability.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Protecting DevOps Pipelines</h4>
+                        <p class="text-gray-300">
+                            Autonomous deployment tools are among the most valuable and vulnerable assets in an enterprise. A compromised pipeline can affect every system downstream. ZTNA, designed for non-human actors, helps reduce supply chain risk while allowing development teams to move fast. Security is enforced quietly in the background, without adding friction to delivery.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Managing Edge Workloads</h4>
+                        <p class="text-gray-300">
+                            As workloads move closer to users and data sources, security must follow. Edge environments require fast, local decisions that traditional centralized controls cannot always provide. Netzilo brings Zero Trust controls directly to these environments. This ensures consistent protection even where the traditional network perimeter no longer exists.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Cost and Complexity: What Decision-Makers Need to Know</h2>
+
+                <p>A common concern is complexity. Netzilo's approach reduces operational burden by:</p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Eliminating VPN sprawl</li>
+                    <li>Reducing credential management</li>
+                    <li>Centralizing policy enforcement</li>
+                </ul>
+
+                <p>
+                    Rather than layering tools, it simplifies access control for both human and non-human identities. This results in lower long-term security overhead, not higher.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Future of ZTNA Is Identity-Agnostic</h2>
+
+                <p>
+                    The enterprise perimeter? Gone. Security built only for humans? Old news. The future is identity-agnostic Zero Trust. Doesn't matter if it's a person, a bot, or an AI agent. Access gets decided by what's happening, the context, and intent. Not by who's behind the request. Netzilo gets that. They're not trying to replace Zero Trust. They're just finishing it. Making it work for the world we actually live in now.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">What does "Zero Trust for Zero Humans" mean?</h4>
+                        <p class="text-gray-300">
+                            It means applying Zero Trust security to environments where access is no longer limited to people. AI agents, automation tools, and machine-driven services are treated as full identities, with every request verified based on behavior, context, and purpose, not assumptions.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Is traditional ZTNA still useful?</h4>
+                        <p class="text-gray-300">
+                            Yes, but it must evolve. Human-centric ZTNA alone cannot secure AI-driven environments. It must evolve to understand and control non-human access.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Does this replace identity and access management (IAM)?</h4>
+                        <p class="text-gray-300">
+                            No. It works alongside IAM, extending Zero Trust controls to machine and autonomous identities.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">Is this only relevant for large enterprises?</h4>
+                        <p class="text-gray-300">
+                            No. Any organization using AI tools, automation, or cloud workloads can benefit from this approach.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">You May Also Want to Read:</h2>
+
+                <div class="grid grid-cols-1 gap-6 my-8">
+                    <a href="mcp-security-problem.html" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">The MCP Security Problem Nobody's Talking About Yet</h4>
+                        <p class="text-gray-400 text-sm">Learn about MCP vulnerabilities, tool poisoning, and why gatewayless defense is becoming essential for securing AI agents.</p>
+                    </a>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="mt-12 text-center">
+                    <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-green-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Ready to implement Zero Trust for all identities?</h3>
+                        <p class="text-gray-400 mb-6">
+                            Discover how Netzilo's edge-native ZTNA secures both human and non-human access with continuous trust evaluation
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Contact Us
+                            </a>
+                            <a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Explore Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy.html" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service.html" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
+
