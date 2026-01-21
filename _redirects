@@ -1,0 +1,64 @@
+# 301 Redirects from .html to clean URLs
+# Main pages
+/index.html                                     /                                               301
+/privacy-policy.html                           /privacy-policy                                  301
+/terms-of-service.html                         /terms-of-service                                301
+
+# Section index pages
+/product/index.html                            /product/                                        301
+/solutions/index.html                          /solutions/                                      301
+/pricing/index.html                            /pricing/                                        301
+/about/index.html                              /about/                                          301
+/contact/index.html                            /contact/                                        301
+/blog/index.html                               /blog/                                           301
+/legal/index.html                              /legal/                                          301
+/resources/whitepapers/index.html              /resources/whitepapers/                          301
+
+# Blog posts
+/blog/Agent-First-Governance.html              /blog/Agent-First-Governance                     301
+/blog/Zero-Trust-for-Zero-Humans.html          /blog/Zero-Trust-for-Zero-Humans                 301
+/blog/Traditional-SIEM-Limitations.html        /blog/Traditional-SIEM-Limitations               301
+/blog/What-is-Agentic-SASE.html                /blog/What-is-Agentic-SASE                       301
+/blog/what-is-prompt-injection.html            /blog/what-is-prompt-injection                   301
+/blog/mcp-security-problem.html                /blog/mcp-security-problem                       301
+/blog/the-paradigm-shift-is-here-again.html    /blog/the-paradigm-shift-is-here-again           301
+/blog/aidr-detecting-and-containing-ai-agent-threats.html  /blog/aidr-detecting-and-containing-ai-agent-threats  301
+/blog/preventing-cursor-vscode-attacks.html    /blog/preventing-cursor-vscode-attacks           301
+/blog/protecting-ai-agents-tool-poisoning.html /blog/protecting-ai-agents-tool-poisoning        301
+/blog/what-happens-when-ai-agents-become-your-users-and-your-attack-surface.html  /blog/what-happens-when-ai-agents-become-your-users-and-your-attack-surface  301
+/blog/redefining-privileged-access-security-ai-proctored-browser-sessions.html  /blog/redefining-privileged-access-security-ai-proctored-browser-sessions  301
+/blog/protecting-the-flow-real-time-data-loss-prevention-for-ai-agents.html  /blog/protecting-the-flow-real-time-data-loss-prevention-for-ai-agents  301
+/blog/enforcing-architectural-security-for-ai-agents-meta-rule-of-two.html  /blog/enforcing-architectural-security-for-ai-agents-meta-rule-of-two  301
+/blog/dynamic-network-security-enforcing-posture-based-controls.html  /blog/dynamic-network-security-enforcing-posture-based-controls  301
+/blog/achieving-strategic-security-situational-awareness-advanced-ai.html  /blog/achieving-strategic-security-situational-awareness-advanced-ai  301
+/blog/securing-generative-ai-adoption-enabling-developer-productivity.html  /blog/securing-generative-ai-adoption-enabling-developer-productivity  301
+/blog/ai-dlp-why-you-need-data-loss-prevention-for-agents-not-just-employees.html  /blog/ai-dlp-why-you-need-data-loss-prevention-for-agents-not-just-employees  301
+/blog/DLP-data-loss-prevention.html            /blog/DLP-data-loss-prevention                   301
+
+# Whitepapers
+/resources/whitepapers/the-next-generation-alternative-to-vdi-rbi-solutions.html  /resources/whitepapers/the-next-generation-alternative-to-vdi-rbi-solutions  301
+/resources/whitepapers/secure-digital-workspace-for-the-post-ai-enterprise.html  /resources/whitepapers/secure-digital-workspace-for-the-post-ai-enterprise  301
+
+# Legal pages
+/legal/acceptable-use-policy.html              /legal/acceptable-use-policy                     301
+/legal/data-processing-addendum.html           /legal/data-processing-addendum                  301
+/legal/free-trial-offer.html                   /legal/free-trial-offer                          301
+/legal/main-service-agreement.html             /legal/main-service-agreement                    301
+/legal/privacy-policy.html                     /legal/privacy-policy                            301
+/legal/security-policies.html                  /legal/security-policies                         301
+/legal/service-level-agreement.html            /legal/service-level-agreement                   301
+/legal/special-terms.html                      /legal/special-terms                             301
+/legal/subprocessors-list.html                 /legal/subprocessors-list                        301
+/legal/terms-of-service.html                   /legal/terms-of-service                          301
+
+# Turkish pages
+/tr/index.html                                 /tr/                                             301
+/tr/product/index.html                         /tr/product/                                     301
+/tr/solutions/index.html                       /tr/solutions/                                   301
+/tr/pricing/index.html                         /tr/pricing/                                     301
+/tr/about/index.html                           /tr/about/                                       301
+/tr/contact/index.html                         /tr/contact/                                     301
+/tr/blog/index.html                            /tr/blog/                                        301
+/tr/blog/paradigma-degisimi-yeniden-burada.html  /tr/blog/paradigma-degisimi-yeniden-burada     301
+/tr/blog/aidr-ai-agent-tehditlerini-tespit-ve-izolasyon.html  /tr/blog/aidr-ai-agent-tehditlerini-tespit-ve-izolasyon  301
+
