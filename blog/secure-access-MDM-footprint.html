@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.netzilo.com/blog/secure-access-MDM-footprint" />
+    <title>How to Secure Contractor and Vendor Access Without Expanding Your MDM Footprint - Netzilo Blog</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-55G045HJ4J');</script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{slate:{950:'#020617',900:'#0f172a',800:'#1e293b',700:'#334155',600:'#475569',500:'#64748b',400:'#94a3b8',300:'#cbd5e1',200:'#e2e8f0',100:'#f1f5f9',50:'#f8fafc'}}}}}</script>
+    <style>html{scroll-behavior:smooth;}.gradient-text{background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.prose-custom{max-width:65ch;}.prose-custom p{margin-bottom:1.5rem;line-height:1.8;}.prose-custom ul{margin-bottom:1.5rem;padding-left:1.5rem;}.prose-custom li{margin-bottom:0.5rem;line-height:1.8;}</style>
+    <script>!function(key){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+key+"/"+key+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center"><a href="../" class="flex items-center"><img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8"></a></div>
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../product/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Product</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                </div>
+                <div class="flex items-center justify-end space-x-4"><a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">Get Started</a></div>
+            </div>
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center"><a href="../" class="flex items-center"><img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8"></a></div>
+                <div class="flex items-center"><button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../product/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Product</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>Back to Blog</a>
+    </div>
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-teal-600/20 text-teal-400 rounded-full text-sm font-semibold border border-teal-600/30">BYOD Security</span>
+                    <span class="ml-4 text-gray-500">February 27, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">How to Secure Contractor and Vendor Access <span class="gradient-text">Without Expanding Your MDM Footprint</span></h1>
+            </div>
+            <div class="prose-custom text-lg text-gray-300">
+                <p>For most enterprises today, third-party access is just part of work. Contractors, vendors, consultants, and short-term staff all need quick access to internal apps and files so things don't slow down. But security teams are already overloaded. More tools, more devices, more rules. It adds up fast. This is where the old MDM-first approach starts to feel heavy and outdated.</p>
+                <p>IAM, IT Ops, and security leaders are asking a fair question now. How do we secure access without forcing MDM on personal devices or creating privacy issues? Managing devices we don't own never feels clean, and it rarely scales well.</p>
+                <p>This article breaks down why MDM often fails with third-party access, how modern access models actually work today, and how AI-driven edge security helps teams move forward, especially in messy BYOD environments.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why MDM Falls Short for Contractors and Vendors</h2>
+                <p>Mobile Device Management was built for corporate-owned endpoints. It assumes long-term employees, standardized hardware, and full administrative control. None of that reflects how contractors and vendors actually work today.</p>
+                <p>Common MDM challenges with third parties include:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li><strong class="text-white">Low adoption:</strong> Contractors resist enrolling personal devices into corporate MDM</li>
+                    <li><strong class="text-white">Privacy concerns:</strong> Full device control creates legal and trust issues</li>
+                    <li><strong class="text-white">Operational overhead:</strong> IT teams must support devices they don't own</li>
+                    <li><strong class="text-white">Slow onboarding/offboarding:</strong> Access often outlives the contract itself</li>
+                </ul>
+                <p>In short, forcing MDM on external users increases friction without meaningfully reducing risk. Worse, it can delay projects and push teams toward insecure workarounds.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Real Risk: Access, Not the Device</h2>
+                <p>Security leaders are increasingly shifting focus from device control to access control. The real question isn't "Is this device managed?" but:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Who is accessing the system?</li>
+                    <li>From where?</li>
+                    <li>Under what conditions?</li>
+                    <li>With what level of risk right now?</li>
+                </ul>
+                <p>Contractors typically need limited, time-bound access to specific applications, not full network visibility. Managing the entire device to solve that problem is excessive. This is why access-first security models are gaining traction.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Modern Requirements for Secure Third-Party Access</h2>
+                <p>Securing contractors and vendors is tricky, especially if you don't want to bloat your MDM. But some basics really help.</p>
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-3">1. Zero Trust Access</h3>
+                        <p class="text-gray-300">Don't assume anything. Every access request should be checked all the time. It does not matter where the user is or what device they're using. Trust nothing, verify everything.</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-3">2. BYOD-Friendly Controls</h3>
+                        <p class="text-gray-300">Most contractors use their own devices. Security needs to work without invading privacy or using heavy tools. Otherwise, people just push back.</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-3">3. Context-Aware Risk Decisions</h3>
+                        <p class="text-gray-300">Access should change based on behavior, location, device health, and session risk. Static rules aren't enough.</p>
+                    </div>
+                    <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6">
+                        <h3 class="text-2xl font-bold text-white mb-3">4. Fast Onboarding and Clean Offboarding</h3>
+                        <p class="text-gray-300">Contractors need access quickly. And when they leave, access should disappear automatically. No leftovers, no messy cleanup.</p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">AI-Powered Edge Security: A Cleaner, Smarter Way to Protect Access</h2>
+                <p>A growing number of organizations are turning to AI-driven edge security to address these challenges. Instead of pushing agents and profiles onto devices, security is enforced at the access layer.</p>
+                <p>Netzilo has introduced an AI-powered edge security approach designed specifically for modern BYOD and third-party scenarios. Rather than expanding MDM, this model evaluates risk in real time and applies granular access controls without managing the entire device.</p>
+                <p>Key advantages of this approach include:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>No device enrollment for contractors</li>
+                    <li>No VPN dependency</li>
+                    <li>No visibility into personal apps or data</li>
+                    <li>Continuous behavioral risk analysis</li>
+                </ul>
+                <p>This aligns closely with how third-party access actually works in the real world.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How AI-Powered Edge Security Reduces MDM Footprint While Keeping Systems Safe</h2>
+                <p>By shifting enforcement to the edge, organizations can:</p>
+                <div class="bg-gradient-to-r from-blue-900/20 to-teal-900/20 border border-blue-500/30 rounded-xl p-8 my-8">
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start"><svg class="w-5 h-5 text-teal-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Limit access to specific apps instead of entire networks</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-teal-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Apply least-privilege policies dynamically</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-teal-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Detect anomalous behavior during active sessions</span></li>
+                        <li class="flex items-start"><svg class="w-5 h-5 text-teal-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Isolate risky access instantly without wiping devices</span></li>
+                    </ul>
+                </div>
+                <p>This model is particularly effective for vendors who rotate frequently or contractors who work across multiple clients. IT teams stay in control of access, not hardware.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Aligning With Industry Security Guidance</h2>
+                <p>This access-first way of thinking isn't random. It lines up with guidance from trusted US institutions like the National Institute of Standards and Technology. NIST keeps pushing <a href="Zero-Trust-for-Zero-Humans" class="text-blue-400 hover:text-blue-300 underline">zero-trust ideas</a> for a reason. Don't assume trust. Keep checking it all the time.</p>
+                <p>Their frameworks focus more on who the user is, what they're doing, and how risky it looks right now. Not who owns the laptop. This matters even more in hybrid and remote setups, where devices, locations, and users are all over the place.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Operational Benefits for IAM and IT Ops Teams</h2>
+                <p>Beyond security, reducing MDM expansion delivers tangible operational gains:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Lower licensing and infrastructure costs</li>
+                    <li>Fewer helpdesk tickets related to personal devices</li>
+                    <li>Faster project starts with external partners</li>
+                    <li>Clearer separation between corporate and personal boundaries</li>
+                </ul>
+                <p>Security teams gain better visibility into access patterns, while IT Ops avoids becoming the support desk for non-employees.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Supporting Vendor Risk Management Programs</h2>
+                <p>Vendor risk management is no longer just a procurement concern; it's a security priority. An access-centric approach allows organizations to:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Enforce contract-based access windows</li>
+                    <li>Audit vendor access activity centrally</li>
+                    <li>Reduce the blast radius if credentials are compromised</li>
+                    <li>Prove compliance during security reviews</li>
+                </ul>
+                <p>Agencies such as the Cybersecurity and Infrastructure Security Agency (CISA) also advocate for zero trust maturity models that reduce reliance on network location and device ownership, key principles when working with external users.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">When MDM Still Makes Sense (And When It Doesn't)</h2>
+                <div class="overflow-x-auto my-8">
+                    <table class="w-full text-sm text-left border border-slate-700 rounded-xl overflow-hidden">
+                        <thead class="bg-slate-800 text-white"><tr><th class="px-6 py-4 font-semibold">Scenario</th><th class="px-6 py-4 font-semibold text-green-400">MDM Fits</th><th class="px-6 py-4 font-semibold text-teal-400">Access-Layer Fits Better</th></tr></thead>
+                        <tbody class="divide-y divide-slate-700">
+                            <tr class="bg-slate-800/30"><td class="px-6 py-4 text-gray-300 font-medium">Corporate-owned laptops and phones</td><td class="px-6 py-4 text-green-400 font-semibold">Yes</td><td class="px-6 py-4 text-gray-500">—</td></tr>
+                            <tr class="bg-slate-800/50"><td class="px-6 py-4 text-gray-300 font-medium">Highly regulated roles requiring full device visibility</td><td class="px-6 py-4 text-green-400 font-semibold">Yes</td><td class="px-6 py-4 text-gray-500">—</td></tr>
+                            <tr class="bg-slate-800/30"><td class="px-6 py-4 text-gray-300 font-medium">Long-term internal employees</td><td class="px-6 py-4 text-green-400 font-semibold">Yes</td><td class="px-6 py-4 text-gray-500">—</td></tr>
+                            <tr class="bg-slate-800/50"><td class="px-6 py-4 text-gray-300 font-medium">Contractors and short-term vendors</td><td class="px-6 py-4 text-red-400">Creates friction &amp; risk</td><td class="px-6 py-4 text-teal-400 font-semibold">Yes</td></tr>
+                            <tr class="bg-slate-800/30"><td class="px-6 py-4 text-gray-300 font-medium">Personal BYOD devices</td><td class="px-6 py-4 text-red-400">Privacy issues</td><td class="px-6 py-4 text-teal-400 font-semibold">Yes</td></tr>
+                            <tr class="bg-slate-800/50"><td class="px-6 py-4 text-gray-300 font-medium">Multi-client workers</td><td class="px-6 py-4 text-red-400">Not scalable</td><td class="px-6 py-4 text-teal-400 font-semibold">Yes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>MDM is not useless. It just gets used in the wrong places sometimes. Problems start when the same approach is pushed onto contractors and short-term vendors. These people come and go. They use personal devices. Forcing MDM slows access, creates pushback, and often leads to shortcuts. That's when risk actually grows.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Final Thoughts</h2>
+                <p>Securing contractor and vendor access doesn't have to mean more MDM or a worse user experience. Chasing device ownership only adds noise. What really matters is identity, context, and what's happening in real time. When access is checked properly, critical systems stay protected without slowing people down.</p>
+                <p>For teams handling nonstop third-party access and BYOD headaches, AI-driven edge security offers a cleaner way forward. It balances security, privacy, and daily operations without piling on extra tools.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6"><h4 class="text-xl font-bold text-white mb-3">1. Can contractors access corporate apps without installing MDM?</h4><p class="text-gray-300">Yes. Access-layer security models allow secure app access without enrolling devices into MDM.</p></div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6"><h4 class="text-xl font-bold text-white mb-3">2. Is BYOD secure without full device management?</h4><p class="text-gray-300">It can be, when access is continuously verified using identity, behavior, and context instead of device control.</p></div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6"><h4 class="text-xl font-bold text-white mb-3">3. How does this impact offboarding contractors?</h4><p class="text-gray-300">Access can be revoked instantly at the policy level, without touching the personal device.</p></div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6"><h4 class="text-xl font-bold text-white mb-3">4. Does AI-driven edge security replace zero trust?</h4><p class="text-gray-300">No. It supports and strengthens zero trust by enforcing it at the edge rather than on the device.</p></div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Related Reading</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                    <a href="enterprise-browser-architecture" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors"><h4 class="text-lg font-bold text-white mb-2">The Enterprise Browser Architecture Explained</h4><p class="text-gray-400 text-sm">How enterprise browsers secure sessions without virtualization — a practical fit for BYOD and contractor access.</p></a>
+                    <a href="Zero-Trust-for-Zero-Humans" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors"><h4 class="text-lg font-bold text-white mb-2">Zero Trust for Zero Humans</h4><p class="text-gray-400 text-sm">How Netzilo redefines ZTNA for non-human actors and AI agents with edge-native enforcement.</p></a>
+                </div>
+                <div class="mt-12 text-center"><a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold"><svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>Back to Blog</a></div>
+                <div class="mt-16 bg-gradient-to-r from-teal-600/10 via-blue-600/10 to-teal-600/10 rounded-2xl p-8 border border-teal-500/20">
+                    <div class="text-center"><h3 class="text-2xl font-bold mb-4">Secure contractor access without MDM sprawl</h3><p class="text-gray-400 mb-6">See how Netzilo's AI-powered edge security enables BYOD-friendly, zero-trust access for third parties</p><div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">Contact Us</a><a href="../product/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">Explore Product</a></div></div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2"><div class="flex items-center mb-4"><img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8"></div><p class="text-gray-400 mb-4 max-w-md">Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.</p><div class="flex space-x-4"><a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors"><svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path></svg></a></div></div>
+                <div><h3 class="text-white font-semibold mb-4">Quick Links</h3><ul class="space-y-2"><li><a href="../product/" class="text-gray-400 hover:text-white transition-colors">Product</a></li><li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li><li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li><li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li><li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li><li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li></ul></div>
+                <div><h3 class="text-white font-semibold mb-4">Contact</h3><ul class="space-y-2"><li class="flex items-center space-x-2 text-gray-400"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg><span>sales@netzilo.com</span></li><li class="flex items-center space-x-2 text-gray-400"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg><span>+1 (415) 985-2636</span></li><li class="flex items-center space-x-2 text-gray-400"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span>San Francisco, CA</span></li></ul></div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8"><div class="flex flex-col md:flex-row justify-between items-center"><p class="text-gray-400 text-sm">© 2025 Netzilo, INC. All rights reserved.</p><div class="flex space-x-6 mt-4 md:mt-0"><a href="../privacy-policy" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a><a href="../terms-of-service" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a></div></div></div>
+        </div>
+    </footer>
+    <script>function toggleMobileMenu(){const m=document.getElementById('mobile-menu');if(m){m.classList.toggle('hidden');}}</script>
+</body>
+</html>
