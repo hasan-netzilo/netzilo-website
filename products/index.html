@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.netzilo.com/products/" />
+    <title>AI Edge Platform - Netzilo - AI Agent Security</title>
+    <meta name="description" content="Netzilo AI Edge Platform: AIDR, Edge Tools, Edge Scanners, Edge Filters, and AI DLP. Secure every AI agent at the edge with behavioral detection and Zero Trust enforcement.">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.6s ease-in-out; }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #06b6d4, #8b5cf6);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s ease infinite;
+        }
+
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3), 0 10px 10px -5px rgba(0,0,0,0.2);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button { position: relative; transition: all 0.3s ease; }
+        .tab-button.active { background-color: #1e40af; color: white; }
+
+        .pillar-card { transition: all 0.3s ease; }
+        .pillar-card:hover { transform: translateY(-6px); border-color: #3b82f6; }
+
+        .severity-high { background-color: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+        .severity-critical { background-color: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+        .action-badge { font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em; }
+        .action-redact { background-color: rgba(168,85,247,0.15); color: #a855f7; }
+        .action-block { background-color: rgba(239,68,68,0.15); color: #ef4444; }
+        .action-alert { background-color: rgba(245,158,11,0.15); color: #f59e0b; }
+        .action-log { background-color: rgba(59,130,246,0.15); color: #3b82f6; }
+    </style>
+    <script>!function(key){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+key+"/"+key+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Products</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                    <a href="../partners/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Partners</a>
+                </div>
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../products/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Products</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../partners/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Partners</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ==================== SECTION 1: PLATFORM OVERVIEW ==================== -->
+        <section class="py-20 bg-slate-950 scroll-reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">The Netzilo AI Edge Platform</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        A unified security platform that runs at the endpoint — discovering, monitoring, filtering, and protecting every AI agent interaction without cloud intermediaries.
+                    </p>
+                </div>
+
+                <!-- 5 Pillars -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
+                    <a href="#aidr" class="pillar-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center group">
+                        <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">AIDR</h3>
+                        <p class="text-gray-400 text-sm">Detect</p>
+                    </a>
+                    <a href="#edge-tools" class="pillar-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center group">
+                        <div class="w-14 h-14 bg-cyan-600/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">Edge Tools</h3>
+                        <p class="text-gray-400 text-sm">Discover</p>
+                    </a>
+                    <a href="#edge-scanners" class="pillar-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center group">
+                        <div class="w-14 h-14 bg-amber-600/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">Edge Scanners</h3>
+                        <p class="text-gray-400 text-sm">Monitor</p>
+                    </a>
+                    <a href="#edge-filters" class="pillar-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center group">
+                        <div class="w-14 h-14 bg-green-600/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">Edge Filters</h3>
+                        <p class="text-gray-400 text-sm">Enforce</p>
+                    </a>
+                    <a href="#ai-dlp" class="pillar-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-center group col-span-2 md:col-span-1">
+                        <div class="w-14 h-14 bg-purple-600/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">AI DLP</h3>
+                        <p class="text-gray-400 text-sm">Protect</p>
+                    </a>
+                </div>
+
+                <!-- Architecture Diagram -->
+                <div class="bg-slate-800/30 border border-slate-700 rounded-2xl p-8 md:p-12">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <!-- Endpoints -->
+                        <div class="bg-slate-800 border border-slate-600 rounded-xl p-5 text-center min-w-[140px]">
+                            <svg class="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <p class="text-white font-semibold text-sm">AI Agents</p>
+                            <p class="text-gray-500 text-xs">Claude, Cursor, Copilot</p>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block">
+                            <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </div>
+                        <div class="block md:hidden">
+                            <svg class="w-8 h-8 text-blue-400 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </div>
+                        <!-- Platform -->
+                        <div class="bg-gradient-to-br from-blue-600/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-6 flex-1 max-w-xl">
+                            <p class="text-blue-400 font-bold text-center mb-4 text-sm tracking-wider uppercase">Netzilo AI Edge Platform</p>
+                            <div class="grid grid-cols-5 gap-2">
+                                <div class="bg-slate-800/80 rounded-lg p-2 text-center">
+                                    <p class="text-blue-400 font-bold text-xs">AIDR</p>
+                                </div>
+                                <div class="bg-slate-800/80 rounded-lg p-2 text-center">
+                                    <p class="text-cyan-400 font-bold text-xs">Tools</p>
+                                </div>
+                                <div class="bg-slate-800/80 rounded-lg p-2 text-center">
+                                    <p class="text-amber-400 font-bold text-xs">Scanners</p>
+                                </div>
+                                <div class="bg-slate-800/80 rounded-lg p-2 text-center">
+                                    <p class="text-green-400 font-bold text-xs">Filters</p>
+                                </div>
+                                <div class="bg-slate-800/80 rounded-lg p-2 text-center">
+                                    <p class="text-purple-400 font-bold text-xs">DLP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block">
+                            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </div>
+                        <div class="block md:hidden">
+                            <svg class="w-8 h-8 text-green-400 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </div>
+                        <!-- Protected -->
+                        <div class="bg-slate-800 border border-green-600/30 rounded-xl p-5 text-center min-w-[140px]">
+                            <svg class="w-8 h-8 text-green-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            <p class="text-white font-semibold text-sm">Enterprise</p>
+                            <p class="text-gray-500 text-xs">Data & Apps Protected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: AIDR DEEP DIVE ==================== -->
+        <section id="aidr" class="py-20 bg-slate-900 scroll-reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                    <div>
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4">
+                            <span class="text-blue-400 text-xs font-semibold tracking-wider uppercase">Flagship Feature</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">AIDR: AI Detection<br>and Response</h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            AIDR is the behavioral detection engine for AI agents. Unlike static prompt scanning, AIDR monitors what agents actually <em>do</em> — detecting anomalous behavior, privilege escalation, and sophisticated multi-step attacks in real time.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300">Enforces <strong class="text-white">Meta's "Agents Rule of Two"</strong> — no agent holds more than 2 of 3 critical privileges simultaneously</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300">Treats AI agents as <strong class="text-white">machine identities</strong> with dedicated security policies</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300">Runs <strong class="text-white">entirely on the endpoint</strong> — no enterprise data passes through third-party servers</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300">Integrates with Netzilo's <strong class="text-white">Zero Trust architecture</strong> to isolate compromised agents</span>
+                            </li>
+                        </ul>
+                        <button onclick="openDemoModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors inline-flex items-center cursor-pointer">
+                            See AIDR in Action
+                            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- AIDR capability cards -->
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="p-3 bg-blue-600/20 rounded-lg flex-shrink-0">
+                                    <svg class="h-6 w-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-2">Behavioral Analysis</h4>
+                                    <p class="text-gray-400 text-sm">Monitors every AI agent action in real time. Detects anomalous behavior patterns, privilege escalation, and data access anomalies that static rules miss.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="p-3 bg-red-600/20 rounded-lg flex-shrink-0">
+                                    <svg class="h-6 w-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-2">Prompt Injection Defense</h4>
+                                    <p class="text-gray-400 text-sm">Catches sophisticated multi-step prompt injection attacks that evade static prompt scanning. Analyzes the full behavioral chain, not just individual prompts.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                            <div class="flex items-start space-x-4">
+                                <div class="p-3 bg-green-600/20 rounded-lg flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-2">Continuous Updates</h4>
+                                    <p class="text-gray-400 text-sm">Detection rules are continuously updated — like antivirus/EDR signatures for the AI era. New threat patterns are pushed as they're discovered.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog cross-links -->
+                <div class="border-t border-slate-700 pt-8">
+                    <p class="text-gray-500 text-sm mb-3 font-medium uppercase tracking-wider">Learn more about AIDR</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="../blog/aidr-detecting-and-containing-ai-agent-threats" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">&rarr; AIDR: Detecting and Containing AI Agent Threats</a>
+                        <a href="../blog/enforcing-architectural-security-for-ai-agents-meta-rule-of-two" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">&rarr; Enforcing Meta's Rule of Two with AI Edge</a>
+                        <a href="../blog/what-happens-when-ai-agents-become-your-users-and-your-attack-surface" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">&rarr; When AI Agents Become Your Attack Surface</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5: EDGE TOOLS ==================== -->
+        <section id="edge-tools" class="py-20 bg-slate-950 scroll-reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+                            <span class="text-cyan-400 text-xs font-semibold tracking-wider uppercase">Discovery & Governance</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Edge Tools</h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            Automatically discover every AI tool and MCP server your organization uses. From Claude and ChatGPT to GitHub Copilot and custom integrations — Edge Tools gives you complete visibility and control.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300"><strong class="text-white">Automatic discovery</strong> — tools detected the moment users access them</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300"><strong class="text-white">Risk assessment</strong> for each tool based on data access, network exposure, and compliance</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300">Supports <strong class="text-white">SSE, HTTP, WebSocket, stdio</strong> integrations</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-gray-300"><strong class="text-white">Approval workflows</strong> — nothing runs without admin authorization</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Mock Dashboard -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden">
+                        <div class="bg-slate-700/50 px-4 py-3 flex items-center justify-between border-b border-slate-600">
+                            <span class="text-white text-sm font-semibold">Discovered Tools</span>
+                            <span class="text-xs text-gray-400">6 tools found</span>
+                        </div>
+                        <div class="divide-y divide-slate-700">
+                            <div class="px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-purple-600/20 rounded-lg flex items-center justify-center"><span class="text-purple-400 text-xs font-bold">C</span></div>
+                                    <div><p class="text-white text-sm font-medium">Claude AI</p><p class="text-gray-500 text-xs">AI & ML</p></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-0.5 rounded bg-green-500/15 text-green-400 border border-green-500/30">Low Risk</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-green-600 text-white">Approved</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-green-600/20 rounded-lg flex items-center justify-center"><span class="text-green-400 text-xs font-bold">G</span></div>
+                                    <div><p class="text-white text-sm font-medium">GitHub Copilot</p><p class="text-gray-500 text-xs">Development</p></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30">Medium</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-green-600 text-white">Approved</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center"><span class="text-blue-400 text-xs font-bold">O</span></div>
+                                    <div><p class="text-white text-sm font-medium">OpenAI ChatGPT</p><p class="text-gray-500 text-xs">AI & ML</p></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30">Medium</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-amber-600 text-white">Pending</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-orange-600/20 rounded-lg flex items-center justify-center"><span class="text-orange-400 text-xs font-bold">HF</span></div>
+                                    <div><p class="text-white text-sm font-medium">Hugging Face</p><p class="text-gray-500 text-xs">AI & ML</p></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-0.5 rounded bg-red-500/15 text-red-400 border border-red-500/30">High Risk</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-red-600 text-white">Blocked</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-indigo-600/20 rounded-lg flex items-center justify-center"><span class="text-indigo-400 text-xs font-bold">S</span></div>
+                                    <div><p class="text-white text-sm font-medium">Slack MCP</p><p class="text-gray-500 text-xs">Productivity</p></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-0.5 rounded bg-green-500/15 text-green-400 border border-green-500/30">Low Risk</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-green-600 text-white">Approved</span>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-pink-600/20 rounded-lg flex items-center justify-center"><span class="text-pink-400 text-xs font-bold">St</span></div>
+                                    <div><p class="text-white text-sm font-medium">Stripe API</p><p class="text-gray-500 text-xs">Business</p></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-0.5 rounded bg-red-500/15 text-red-400 border border-red-500/30">High Risk</span>
+                                    <span class="text-xs px-2 py-0.5 rounded bg-amber-600 text-white">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6: EDGE SCANNERS ==================== -->
+        <section id="edge-scanners" class="py-20 bg-slate-900 scroll-reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
+                        <span class="text-amber-400 text-xs font-semibold tracking-wider uppercase">Real-Time Monitoring</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Edge Scanners</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                        Real-time security monitoring for MCP communications and AI tool interactions. Pre-configured scanners detect threats, redact sensitive data, and block attacks — with full YAML customization.
+                    </p>
+                </div>
+
+                <!-- 2x3 Scanner Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="severity-high text-xs px-2.5 py-1 rounded-md font-semibold">HIGH</span>
+                            <div class="flex gap-1"><span class="action-badge action-block">BLOCK</span><span class="action-badge action-alert">ALERT</span></div>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Path Traversal Detection</h4>
+                        <p class="text-gray-400 text-sm">Identifies directory traversal patterns in AI agent requests, preventing unauthorized file system access through `../` sequences.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="severity-high text-xs px-2.5 py-1 rounded-md font-semibold">HIGH</span>
+                            <div class="flex gap-1"><span class="action-badge action-redact">REDACT</span><span class="action-badge action-log">LOG</span></div>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">PII Detection</h4>
+                        <p class="text-gray-400 text-sm">Detects and redacts SSNs, credit card numbers, email addresses, MAC addresses, and other personally identifiable information in real time.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="severity-high text-xs px-2.5 py-1 rounded-md font-semibold">HIGH</span>
+                            <div class="flex gap-1"><span class="action-badge action-block">BLOCK</span><span class="action-badge action-alert">ALERT</span></div>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">Prompt Injection Detection</h4>
+                        <p class="text-gray-400 text-sm">Blocks system instruction override attempts and malicious prompt manipulation targeting AI agents through MCP channels.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="severity-high text-xs px-2.5 py-1 rounded-md font-semibold">HIGH</span>
+                            <div class="flex gap-1"><span class="action-badge action-redact">REDACT</span><span class="action-badge action-alert">ALERT</span></div>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">API Key / Secret Redaction</h4>
+                        <p class="text-gray-400 text-sm">Masks API keys, tokens, and credentials before they can be exposed through AI-generated outputs or logged in MCP sessions.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="severity-critical text-xs px-2.5 py-1 rounded-md font-semibold">CRITICAL</span>
+                            <div class="flex gap-1"><span class="action-badge action-block">BLOCK</span><span class="action-badge action-alert">ALERT</span></div>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">SSH Key Exfiltration</h4>
+                        <p class="text-gray-400 text-sm">Prevents SSH private key uploads and exfiltration attempts through AI agent channels. Blocks the most critical credential theft vector.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="severity-critical text-xs px-2.5 py-1 rounded-md font-semibold">CRITICAL</span>
+                            <div class="flex gap-1"><span class="action-badge action-block">BLOCK</span><span class="action-badge action-log">LOG</span></div>
+                        </div>
+                        <h4 class="text-white font-bold mb-2">System Enumeration</h4>
+                        <p class="text-gray-400 text-sm">Blocks environment variable harvesting, system reconnaissance, and data theft attempts that exploit AI agents as recon tools.</p>
+                    </div>
+                </div>
+
+                <!-- Custom rules note + doc link -->
+                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <p class="text-white font-semibold mb-1">Build Custom Scanners</p>
+                        <p class="text-gray-400 text-sm">Define your own detection rules with YAML-based configuration. Regex patterns, custom actions, notification channels, and performance-optimized scanning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 7: EDGE FILTERS ==================== -->
+        <section id="edge-filters" class="py-20 bg-slate-950 scroll-reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+                        <span class="text-green-400 text-xs font-semibold tracking-wider uppercase">Policy Enforcement</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Edge Filters</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                        Unified access control policies that bind tools, scanners, posture checks, and user groups into enforceable security rules. One filter, complete protection.
+                    </p>
+                </div>
+
+                <!-- Platform icons -->
+                <div class="flex justify-center gap-6 mb-12">
+                    <div class="flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path></svg>
+                        <span class="text-gray-300 text-sm">macOS</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5.5L12 2l9 3.5v5c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12v-5zm9 .5L5 8.5v4c0 4.52 3.13 8.72 7 9.93 3.87-1.21 7-5.41 7-9.93v-4L12 6z"></path></svg>
+                        <span class="text-gray-300 text-sm">Windows</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 3h6.93c-.04.34-.11.67-.19 1H13v-1zm0 3h5.92c-.2.35-.43.69-.68 1H13v-1zm0 3h2.87c-.87.48-1.84.8-2.87.93V19z"></path></svg>
+                        <span class="text-gray-300 text-sm">Linux</span>
+                    </div>
+                    <div class="hidden sm:flex items-center space-x-2 bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 2H6.477C5.1 2 4 3.1 4 4.477v15.046C4 20.9 5.1 22 6.477 22h11.046C18.9 22 20 20.9 20 19.523V4.477C20 3.1 18.9 2 17.523 2zM12 20.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM18 17H6V5h12v12z"></path></svg>
+                        <span class="text-gray-300 text-sm">Mobile</span>
+                    </div>
+                </div>
+
+                <!-- Use Case Tabs -->
+                <div class="mb-4">
+                    <div class="flex flex-wrap justify-center gap-2 mb-8">
+                        <button onclick="showFilterTab('developer')" class="filter-tab-btn tab-button active px-5 py-2.5 rounded-lg text-sm font-medium bg-slate-800 border border-slate-700 text-gray-300 hover:text-white transition-all">Developer Access</button>
+                        <button onclick="showFilterTab('executive')" class="filter-tab-btn tab-button px-5 py-2.5 rounded-lg text-sm font-medium bg-slate-800 border border-slate-700 text-gray-300 hover:text-white transition-all">Executive Access</button>
+                        <button onclick="showFilterTab('contractor')" class="filter-tab-btn tab-button px-5 py-2.5 rounded-lg text-sm font-medium bg-slate-800 border border-slate-700 text-gray-300 hover:text-white transition-all">Contractor Limited</button>
+                        <button onclick="showFilterTab('byod')" class="filter-tab-btn tab-button px-5 py-2.5 rounded-lg text-sm font-medium bg-slate-800 border border-slate-700 text-gray-300 hover:text-white transition-all">BYOD</button>
+                    </div>
+
+                    <!-- Developer Tab -->
+                    <div id="filter-developer" class="tab-content active">
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Allowed Tools</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>GitHub</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>VS Code / Cursor</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Jira</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Slack</span></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-amber-400 rounded-full mr-2"></span>Active Scanners</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>Prompt Injection Scanner</li>
+                                        <li>API Key Scanner</li>
+                                        <li>PII Detection</li>
+                                        <li>AIDR Behavioral Scanner</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>Posture Checks</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>OS version &ge; latest-1</li>
+                                        <li>Firewall enabled</li>
+                                        <li>Disk encryption active</li>
+                                        <li>Client version current</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Executive Tab -->
+                    <div id="filter-executive" class="tab-content">
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Allowed Tools</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Salesforce CRM</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Analytics Dashboard</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Gmail / Outlook</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Slack</span></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-amber-400 rounded-full mr-2"></span>Active Scanners</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>All 6 Global Scanners</li>
+                                        <li>AIDR Behavioral Scanner</li>
+                                        <li>Custom Finance Scanner</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>Posture Checks</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>Device managed by IT</li>
+                                        <li>Screen lock enabled</li>
+                                        <li>Antivirus up to date</li>
+                                        <li>Location: Corporate / VPN</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contractor Tab -->
+                    <div id="filter-contractor" class="tab-content">
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Allowed Tools</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Project-specific repos only</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Jira (read-only)</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span>No CRM access</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span>No unsanctioned tools</span></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-amber-400 rounded-full mr-2"></span>Active Scanners</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>All 6 Global Scanners</li>
+                                        <li>Data Exfiltration Scanner</li>
+                                        <li>AIDR Behavioral Scanner</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>Posture Checks</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>Disk encryption required</li>
+                                        <li>Firewall enabled</li>
+                                        <li>Location: Approved regions</li>
+                                        <li>Time-limited access window</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BYOD Tab -->
+                    <div id="filter-byod" class="tab-content">
+                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Allowed Tools</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Web-based tools only</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Gmail / OneDrive</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span>No local file access</span></li>
+                                        <li class="flex items-center space-x-2"><svg class="h-4 w-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span>No stdio tools</span></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-amber-400 rounded-full mr-2"></span>Active Scanners</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>All 6 Global Scanners</li>
+                                        <li>Enhanced PII Scanner</li>
+                                        <li>AIDR Behavioral Scanner</li>
+                                        <li>Data Exfiltration Scanner</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>Posture Checks</h4>
+                                    <ul class="space-y-2 text-gray-300 text-sm">
+                                        <li>OS version current</li>
+                                        <li>Antivirus installed</li>
+                                        <li>Screen lock &le; 5 min</li>
+                                        <li>Browser isolation active</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 8: AI DLP ==================== -->
+        <section id="ai-dlp" class="py-20 bg-slate-900 scroll-reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+                        <span class="text-purple-400 text-xs font-semibold tracking-wider uppercase">Data Protection</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">AI DLP: Data Loss Prevention<br>for the Agentic Era</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                        AI agents process sensitive data at machine speed. AI DLP ensures nothing leaves the edge unauthorized — scanning outputs in real time, redacting PII, and managing agent identities.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-8 card-hover">
+                        <div class="p-3 bg-purple-600/20 rounded-lg inline-block mb-4">
+                            <svg class="h-7 w-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-2">Real-Time Output Scanning</h4>
+                        <p class="text-gray-400">Every AI-generated response is scanned before delivery. Sensitive data is caught and handled in milliseconds — not after the fact.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-8 card-hover">
+                        <div class="p-3 bg-purple-600/20 rounded-lg inline-block mb-4">
+                            <svg class="h-7 w-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-2">Pattern-Based Detection</h4>
+                        <p class="text-gray-400">Detects PII (SSNs, credit cards, emails), financial data, health information (PHI), and custom patterns with context-aware AI understanding.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-8 card-hover">
+                        <div class="p-3 bg-purple-600/20 rounded-lg inline-block mb-4">
+                            <svg class="h-7 w-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-2">Automated Redaction</h4>
+                        <p class="text-gray-400">Sensitive data is automatically masked, hashed, or sanitized before reaching end users. Configurable redaction strategies per data type.</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-8 card-hover">
+                        <div class="p-3 bg-purple-600/20 rounded-lg inline-block mb-4">
+                            <svg class="h-7 w-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-2">Agent Identity Management</h4>
+                        <p class="text-gray-400">Each AI agent gets its own identity with scoped access policies. Agents only access the data they need — least privilege enforced at the identity level.</p>
+                    </div>
+                </div>
+                <!-- Blog links -->
+                <div class="border-t border-slate-700 pt-8">
+                    <p class="text-gray-500 text-sm mb-3 font-medium uppercase tracking-wider">Learn more about AI DLP</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="../blog/protecting-the-flow-real-time-data-loss-prevention-for-ai-agents" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">&rarr; Real-Time Data Loss Prevention for AI Agents</a>
+                        <a href="../blog/DLP-data-loss-prevention" class="text-blue-400 hover:text-blue-300 text-sm transition-colors">&rarr; AI DLP: Why You Need DLP for Agents, Not Just Employees</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CTA ==================== -->
+        <section class="py-20 bg-gradient-to-r from-blue-600 to-cyan-600">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Secure Your AI Agents?</h2>
+                <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                    Schedule a personalized demo to see how the Netzilo AI Edge Platform protects your enterprise from AI-driven threats.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+                    <button onclick="openDemoModal()" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-md transition-colors inline-flex items-center justify-center cursor-pointer">
+                        Schedule Demo
+                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-md transition-colors inline-flex items-center justify-center">
+                        Get Started Free
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-blue-100 text-sm">
+                    <span class="flex items-center space-x-2"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Edge-first enforcement</span></span>
+                    <span class="flex items-center space-x-2"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Deploy in minutes</span></span>
+                    <span class="flex items-center space-x-2"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Enterprise-grade security</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 11: RELATED BLOGS ==================== -->
+        <section class="py-16 bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-white mb-8 text-center">From Our Blog</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="../blog/aidr-detecting-and-containing-ai-agent-threats" class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden card-hover group">
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="text-xs bg-blue-600/20 text-blue-400 px-2 py-0.5 rounded">AIDR</span>
+                                <span class="text-xs text-gray-500">Nov 11, 2025</span>
+                            </div>
+                            <h3 class="text-white font-bold mb-2 group-hover:text-blue-400 transition-colors">AIDR: Detecting and Containing AI Agent Threats</h3>
+                            <p class="text-gray-400 text-sm">How behavioral detection catches sophisticated prompt injection attacks that bypass static scanning.</p>
+                        </div>
+                    </a>
+                    <a href="../blog/enforcing-architectural-security-for-ai-agents-meta-rule-of-two" class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden card-hover group">
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="text-xs bg-blue-600/20 text-blue-400 px-2 py-0.5 rounded">AI Edge</span>
+                                <span class="text-xs text-gray-500">Dec 9, 2025</span>
+                            </div>
+                            <h3 class="text-white font-bold mb-2 group-hover:text-blue-400 transition-colors">Enforcing Meta's Rule of Two with Netzilo AI Edge</h3>
+                            <p class="text-gray-400 text-sm">Deploying architectural security for AI agents with dynamic enforcement at the edge.</p>
+                        </div>
+                    </a>
+                    <a href="../blog/protecting-the-flow-real-time-data-loss-prevention-for-ai-agents" class="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden card-hover group">
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="text-xs bg-purple-600/20 text-purple-400 px-2 py-0.5 rounded">AI DLP</span>
+                                <span class="text-xs text-gray-500">Oct 25, 2025</span>
+                            </div>
+                            <h3 class="text-white font-bold mb-2 group-hover:text-blue-400 transition-colors">Real-Time Data Loss Prevention for AI Agents</h3>
+                            <p class="text-gray-400 text-sm">How real-time DLP protects sensitive data flowing through AI agent interactions.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeDemoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Schedule Your Demo</h3>
+                <p class="text-gray-600 mb-6">Choose a time that works best for you to see Netzilo in action.</p>
+                <div class="meetings-iframe-container" data-src="https://meetings-na2.hubspot.com/matt-ezberci/product-demo?embed=true"></div>
+                <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo secures AI-driven activity at the enterprise edge — detecting threats, governing MCP behavior, and enforcing Zero Trust for autonomous agents.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../products/" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>San Francisco, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Netzilo, INC. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) mobileMenu.classList.toggle('hidden');
+        }
+
+        function openDemoModal() {
+            const modal = document.getElementById('demoModal');
+            if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        }
+
+        function closeDemoModal() {
+            const modal = document.getElementById('demoModal');
+            if (modal) { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('demoModal')) closeDemoModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDemoModal();
+        });
+
+        // Edge Filter tabs
+        function showFilterTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+            const content = document.getElementById('filter-' + tabName);
+            if (content) content.classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
