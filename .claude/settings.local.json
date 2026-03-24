@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc \"/Users/hasan.turkyilmaz/Downloads/What Security Leaders Should Evaluate Before Adopting an Enterprise Browser.docx\" -o /tmp/enterprise-browser.md)",
+      "Bash(pip3 install:*)",
+      "Bash(find /Users/hasan.turkyilmaz/Documents/.claude/worktrees/hopeful-kirch -type f \\\\\\(-name *.md -o -name *.mdx \\\\\\))",
+      "Bash(find /Users/hasan.turkyilmaz/Documents/.claude/worktrees/hopeful-kirch -name *.json -o -name *.yaml -o -name *.yml -o -name *.config.*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Read(//Users/hasan.turkyilmaz/Documents/**)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 GIT_WORK_TREE=/Users/hasan.turkyilmaz/Documents git -C /Users/hasan.turkyilmaz/Documents filter-branch --force --index-filter 'git rm --cached --ignore-unmatch .local/share/claude/versions/2.1.62 .local/bin/claude \"\".copilot/ide/4d141e22-32dd-4015-bb06-c596c7927dcb.lock\"\" .gitignore netzilo-doc' --prune-empty -- origin/main..HEAD)",
+      "Read(//Users/hasan.turkyilmaz/**)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git -C /Users/hasan.turkyilmaz/Documents filter-branch --force --index-filter 'git rm --cached --ignore-unmatch .local/share/claude/versions/2.1.62 .local/bin/claude \"\".copilot/ide/4d141e22-32dd-4015-bb06-c596c7927dcb.lock\"\" .gitignore netzilo-doc' --prune-empty -- origin/main..HEAD)",
+      "Bash(git -C /Users/hasan.turkyilmaz/Documents rev-parse --show-toplevel)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git --git-dir=/Users/hasan.turkyilmaz/Documents/.git --work-tree=/Users/hasan.turkyilmaz/Documents filter-branch --force --index-filter 'git rm --cached --ignore-unmatch Documents/.local/share/claude/versions/2.1.62 Documents/.local/bin/claude \"\"Documents/.copilot/ide/4d141e22-32dd-4015-bb06-c596c7927dcb.lock\"\" Documents/.gitignore Documents/netzilo-doc' --prune-empty -- origin/main..HEAD)",
+      "Bash(git -C /Users/hasan.turkyilmaz/Documents rev-parse --git-dir)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch \"\".copilot/ide/4d141e22-32dd-4015-bb06-c596c7927dcb.lock\"\" \"\".gitignore\"\" \"\".local/bin/claude\"\" \"\".local/share/claude/versions/2.1.62\"\" \"\"netzilo-doc\"\"' --prune-empty -- origin/main..HEAD)",
+      "WebFetch(domain:doc.netzilo.com)"
+    ]
+  }
+}

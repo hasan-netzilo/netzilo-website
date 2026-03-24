@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/hasan.turkyilmaz/Documents/.claude/worktrees/hopeful-kirch", "-p", "8090"],
+      "port": 8090,
+      "autoPort": true
+    }
+  ]
+}
