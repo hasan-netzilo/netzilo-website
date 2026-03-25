@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.netzilo.com/schedule/" />
+    <title>Schedule Your Meeting - Netzilo</title>
+    <meta name="description" content="Schedule a meeting with Netzilo. Enter your details to confirm your meeting and opt in to receive SMS reminders.">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col">
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-md">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <a href="../">
+                    <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8 mx-auto">
+                </a>
+            </div>
+
+            <!-- Form Card -->
+            <div class="bg-slate-800 border border-slate-700 rounded-lg p-8">
+                <h1 class="text-2xl font-bold text-white mb-2">Schedule Your Meeting</h1>
+                <p class="text-gray-400 text-sm mb-6">Enter your details below to confirm your meeting. You may also opt in to receive SMS reminders so you never miss an appointment.</p>
+
+                <form id="schedule-form" class="space-y-5">
+                    <!-- Full Name -->
+                    <div>
+                        <label for="full_name" class="block text-white text-sm font-medium mb-1.5">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" placeholder="John Smith" class="w-full bg-slate-700 border border-slate-600 text-white rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500 placeholder-slate-400" required>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label for="phone" class="block text-white text-sm font-medium mb-1.5">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" class="w-full bg-slate-700 border border-slate-600 text-white rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500 placeholder-slate-400" required>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div>
+                        <label for="email" class="block text-white text-sm font-medium mb-1.5">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" class="w-full bg-slate-700 border border-slate-600 text-white rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500 placeholder-slate-400" required>
+                    </div>
+
+                    <!-- SMS Consent Checkbox -->
+                    <div class="pt-1">
+                        <label class="flex items-start space-x-3 cursor-pointer">
+                            <input type="checkbox" id="sms_consent" name="sms_consent" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-700 text-blue-600 focus:ring-blue-500 flex-shrink-0" required>
+                            <span class="text-gray-300 text-xs leading-relaxed">
+                                <strong class="text-white">I agree to receive SMS text messages</strong> from Netzilo, including meeting reminders, scheduling confirmations, and meeting details (date, time, representative name, and Zoom link). Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for assistance.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="bg-slate-900 border border-slate-700 rounded-md p-3">
+                        <p class="text-gray-500 text-xs leading-relaxed">
+                            By checking this box, you provide your express written consent to receive automated SMS messages from Netzilo at the phone number provided. Consent is not a condition of purchase or service. You can revoke consent at any time by replying STOP. View our <a href="../privacy-policy" class="text-blue-400 hover:underline">Privacy Policy</a> and <a href="../terms-of-service" class="text-blue-400 hover:underline">Terms of Service</a>.
+                        </p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submit-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-md text-sm font-medium transition-colors">
+                        Confirm &amp; Schedule Meeting
+                    </button>
+                </form>
+
+                <!-- Success/Error Messages -->
+                <div id="form-message" class="mt-4 p-4 rounded-lg hidden">
+                    <div id="message-content"></div>
+                </div>
+            </div>
+
+            <!-- Footer link -->
+            <p class="text-center text-gray-500 text-xs mt-6">
+                &copy; 2025 Netzilo, INC. All rights reserved.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // EmailJS Configuration
+        (function() {
+            emailjs.init("SnInIW9nwCAjrhCt2");
+        })();
+
+        // Handle form submission
+        document.getElementById('schedule-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var submitBtn = document.getElementById('submit-btn');
+            var messageDiv = document.getElementById('form-message');
+            var messageContent = document.getElementById('message-content');
+
+            // Show loading state
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            messageDiv.classList.add('hidden');
+
+            // Get form data
+            var formData = new FormData(this);
+            var templateParams = {
+                first_name: formData.get('full_name'),
+                last_name: '',
+                email: formData.get('email'),
+                company: 'Phone: ' + formData.get('phone'),
+                message: 'SMS Consent: Yes\nPhone: ' + formData.get('phone') + '\nName: ' + formData.get('full_name') + '\nEmail: ' + formData.get('email'),
+                to_email: 'sales@netzilo.com'
+            };
+
+            // Send email using EmailJS
+            emailjs.send("service_ggucdjo", "template_7i644jm", templateParams)
+                .then(function() {
+                    messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-800 border border-green-600';
+                    messageContent.innerHTML = '<div class="flex items-center"><svg class="h-5 w-5 text-green-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span class="text-green-300 text-sm">Your meeting request has been submitted. We\'ll reach out shortly to confirm your appointment.</span></div>';
+                    document.getElementById('schedule-form').reset();
+                }, function() {
+                    messageDiv.className = 'mt-4 p-4 rounded-lg bg-red-800 border border-red-600';
+                    messageContent.innerHTML = '<div class="flex items-center"><svg class="h-5 w-5 text-red-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span class="text-red-300 text-sm">Something went wrong. Please try again or email us at sales@netzilo.com</span></div>';
+                })
+                .finally(function() {
+                    submitBtn.textContent = 'Confirm & Schedule Meeting';
+                    submitBtn.disabled = false;
+                    messageDiv.classList.remove('hidden');
+                });
+        });
+    </script>
+</body>
+</html>
