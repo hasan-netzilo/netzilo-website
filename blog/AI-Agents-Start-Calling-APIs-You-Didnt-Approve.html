@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.netzilo.com/blog/AI-Agents-Start-Calling-APIs-You-Didnt-Approve" />
+    <title>When AI Agents Start Calling APIs You Didn't Approve: The Hidden Security Threat - Netzilo Blog</title>
+    <meta name="description" content="AI agents are making API calls you never approved. Learn how AIDR (AI Detection and Response) detects unauthorized agent behavior, contains Shadow AI, and closes the gaps that traditional security tools miss.">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.netzilo.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.netzilo.com/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "When AI Agents Start Calling APIs You Didn't Approve", "item": "https://www.netzilo.com/blog/AI-Agents-Start-Calling-APIs-You-Didnt-Approve" }
+      ]
+    }
+    </script>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Products</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
+                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                    <a href="../partners/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Partners</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../products/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Products</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
+                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../partners/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Partners</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2">
+                        <a href="../tr/blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">TR</a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md mt-2">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-sm font-semibold border border-purple-600/30">
+                        AIDR
+                    </span>
+                    <span class="ml-4 text-gray-500">April 16, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    When AI Agents Start Calling APIs You Didn't Approve: <span class="gradient-text">The Hidden Security Threat</span>
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+                <p>
+                    AI agents are not new anymore. They are already inside real systems. They read data. They write data. They call APIs. They do it fast and without asking questions. That part is what makes people nervous. Because once an AI agent is running, it does not pause. It keeps going.
+                </p>
+
+                <p>
+                    This article is about what happens when AI agents start calling APIs you never approved. Not by mistake. Not because of a bug. But because the system allowed it. And nobody noticed in time.
+                </p>
+
+                <p>
+                    This is where <a href="aidr-detecting-and-containing-ai-agent-threats" class="text-blue-400 hover:text-blue-300 underline">AIDR, AI Detection and Response</a> becomes important. Not optional. Netzilo talks about this shift clearly. AI is no longer just a tool. It is now an active actor in the environment. And active actors need monitoring, rules, and response.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">AI Agents Are Not Just Software Users Anymore</h2>
+
+                <p>
+                    Most security systems were built for humans. Users log in. Users click things. Users make mistakes slowly. AI agents do none of that.
+                </p>
+
+                <p>An AI agent can:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Make thousands of API calls in minutes</li>
+                    <li>Access systems using service tokens</li>
+                    <li>Chain actions across multiple platforms</li>
+                    <li>Act on instructions pulled from data, not people</li>
+                </ul>
+
+                <p>
+                    Security teams often treat these agents like background services. They are low risk and trusted. That assumption breaks quickly.
+                </p>
+
+                <p>
+                    Once an agent has credentials, it has power. And that power is usually broad. Read access. Write access. Sometimes admin access. It is given for convenience. Speed matters more than control. That works until it doesn't. And when it fails, it fails quietly.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">How Unapproved API Calls Actually Happen</h2>
+
+                <p>
+                    Most teams imagine unapproved API calls as hacking events. That is not always true. In many cases, no attacker is logged in.
+                </p>
+
+                <p>Here are common ways it happens:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>An AI agent is trained on unfiltered internal data</li>
+                    <li>A prompt includes instructions that trigger tool usage</li>
+                    <li>The agent selects an API that was never intended for that task</li>
+                    <li>The call succeeds because permissions were already there</li>
+                </ul>
+
+                <p>No firewall alert. No failed login. Just an activity that looks normal.</p>
+
+                <p>
+                    In some cases, the agent is influenced by external input like a document, support ticket, or a message. That input changes how the agent behaves. This is the essence of <a href="what-is-prompt-injection" class="text-blue-400 hover:text-blue-300 underline">prompt injection</a>. The agent does not know that they crossed a line. From the logs, it looks like business as usual.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why Traditional Security Tools Miss This</h2>
+
+                <p>
+                    This is where most defenses fall short. They were not designed for autonomous behavior.
+                </p>
+
+                <p>Traditional tools focus on:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Known threat signatures</li>
+                    <li>Human login patterns</li>
+                    <li>Static access rules</li>
+                    <li>After-the-fact analysis</li>
+                </ul>
+
+                <p>
+                    AI agents do not fit these patterns. They do not log in at 9 AM. They do not behave consistently. They adapt.
+                </p>
+
+                <p>Some key blind spots:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>API gateways allow traffic once a key is valid</li>
+                    <li><a href="Traditional-SIEM-Limitations" class="text-blue-400 hover:text-blue-300 underline">SIEM tools</a> see volume, not intent</li>
+                    <li><a href="DLP-data-loss-prevention" class="text-blue-400 hover:text-blue-300 underline">DLP tools</a> inspect data, not agent reasoning</li>
+                    <li>IAM assumes credentials equal approval</li>
+                </ul>
+
+                <p>This creates a gap. And AI agents live in that gap.</p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Real Risk Is Not Volume, It Is Intent</h2>
+
+                <p>A single API call can do damage. It does not need to be loud.</p>
+
+                <p>An AI agent can:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Pull sensitive records; it was never meant to be seen</li>
+                    <li>Send data to external tools for processing</li>
+                    <li>Modify configurations across systems</li>
+                    <li>Trigger workflows that affect customers</li>
+                </ul>
+
+                <p>
+                    And it does this without malicious intent. That makes detection harder. There is no obvious threat signature. This is why AI Detection and Response (AIDR) matters. It focuses on behavior, not just access.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What AIDR Actually Does</h2>
+
+                <p>
+                    AIDR is not another dashboard. It is not old logging with a new name. It changes how AI activity is seen and handled. At a basic level, AIDR focuses on three things. It detects unusual AI agent behavior. It understands what the agent is trying to do. And it responds before damage spreads. Detection alone is not enough. Response matters more.
+                </p>
+
+                <p>Core AIDR capabilities include:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Visibility into all AI agents and their tool usage</li>
+                    <li>Monitoring API call patterns and intent</li>
+                    <li>Inspecting prompts and input sources</li>
+                    <li>Stopping or isolating agents in real time</li>
+                </ul>
+
+                <p>
+                    AIDR is built for AI-native systems. As GenAI and autonomous agents expand, they create attack surfaces that EDR and XDR were never designed to protect.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Shadow AI Makes This Worse</h2>
+
+                <p>
+                    Shadow AI is already everywhere. Teams deploy agents without a security review. Vendors embed agents inside products. Developers test things in production. It happens quietly.
+                </p>
+
+                <p>Shadow AI creates problems because:</p>
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Security teams do not know which agents exist</li>
+                    <li>No clear owner is responsible</li>
+                    <li>Permissions are copied from other services</li>
+                    <li>Monitoring is incomplete or missing</li>
+                </ul>
+
+                <p>
+                    Once these agents are active, they behave like trusted insiders. They are not flagged. They are not questioned. AIDR helps uncover these agents. It surfaces activity that was never documented. That alone reduces risk. For a structured way to bring Shadow AI into the open, see our <a href="Agent-First-Governance" class="text-blue-400 hover:text-blue-300 underline">practical roadmap from Shadow AI to secure, agent-first governance</a>.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why Zero Trust Breaks Down With AI Agents</h2>
+
+                <p>
+                    Zero Trust is solid. It still matters. But on its own, it struggles with AI agents. Zero Trust assumes identities are known, requests are short, and context stays stable. AI agents do not work like that. They run nonstop. Their context shifts with data. Their identity is often shared across services.
+                </p>
+
+                <p>
+                    That is why Zero Trust needs AIDR next to it. Together, they enable continuous behavior checks, limit what agents can do, and enforce rules at runtime. This matters most when agents call APIs dynamically. For deeper guidance on how Zero Trust must evolve for non-human actors, read <a href="Zero-Trust-for-Zero-Humans" class="text-blue-400 hover:text-blue-300 underline">Zero Trust for Zero Humans</a>, or visit the <a href="https://www.nist.gov/" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">National Institute of Standards and Technology</a>.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Practical Steps to Manage AI Agents Safely</h2>
+
+                <p>
+                    To reduce risk from AI agents calling APIs without approval, organizations can follow some clear practices:
+                </p>
+
+                <ul class="space-y-2 text-gray-300 list-disc pl-6">
+                    <li>Map all approved AI workflows and set strict policy baselines.</li>
+                    <li>Use AI-aware detection and response tools (AIDR) to monitor autonomous behavior.</li>
+                    <li>Apply Zero Trust models for API access, where every call is checked and contextualized.</li>
+                    <li>Regularly audit agent identities, scopes, and permissions.</li>
+                    <li>Use sandboxing and anomaly detection to catch unusual agent activity early.</li>
+                </ul>
+
+                <p>
+                    For more guidance on protecting complex systems against autonomous threats, see the <a href="https://owasp.org/" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline">Open Web Application Security Project</a>.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Final Thoughts</h2>
+
+                <p>
+                    AI agents are not evil. They are not broken. They are just powerful and fast. The problem is not AI itself. The problem is a lack of visibility and control. When agents act without detection, small issues become large ones.
+                </p>
+
+                <p>
+                    AIDR is about restoring balance. Seeing what agents do. Understanding why they do it. Stopping them when they go too far. If your environment has AI agents, you already need this. Waiting will not make it simpler.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">FAQs</h2>
+
+                <div class="space-y-6 my-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">1. What is meant by AIDR?</h4>
+                        <p class="text-gray-300">
+                            AIDR stands for AI Detection and Response. It monitors AI agents and reacts when their behavior becomes risky or unexpected.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">2. Why do AI agents make unapproved API calls?</h4>
+                        <p class="text-gray-300">
+                            Because they act based on data and permissions. If access exists, they will use it, even if no human approved that specific action.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">3. Can traditional SIEM tools handle AI agent risks effectively?</h4>
+                        <p class="text-gray-300">
+                            Not well. SIEM tools see events. AIDR understands agent behavior and intent in real time.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                        <h4 class="text-xl font-bold text-white mb-3">4. Is this risk limited to large enterprises only?</h4>
+                        <p class="text-gray-300">
+                            No. Any organization using AI agents with API access can face this risk, regardless of size.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">You May Also Want to Read:</h2>
+
+                <div class="grid grid-cols-1 gap-6 my-8">
+                    <a href="Agent-First-Governance" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">From Shadow AI to Secure AI: A Practical Roadmap for Agent-First Governance</h4>
+                        <p class="text-gray-400 text-sm">A 6-step roadmap to move from unmanaged, unapproved AI usage to secure, agent-first governance.</p>
+                    </a>
+                    <a href="Zero-Trust-for-Zero-Humans" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">Zero Trust for Zero Humans: Redefining ZTNA in a Post-AI Enterprise</h4>
+                        <p class="text-gray-400 text-sm">Why traditional Zero Trust breaks when AI agents, not humans, are the primary actors, and how to fix it.</p>
+                    </a>
+                    <a href="aidr-detecting-and-containing-ai-agent-threats" class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">AIDR: Detecting and Containing AI Agent Threats</h4>
+                        <p class="text-gray-400 text-sm">How behavioral detection, the Lethal Trifecta, and Meta's Rule of Two help contain autonomous agent risk.</p>
+                    </a>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="mt-12 text-center">
+                    <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Ready to see what your AI agents are really doing?</h3>
+                        <p class="text-gray-400 mb-6">
+                            Discover how Netzilo AIDR brings visibility, control, and real-time response to autonomous agent activity
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Contact Us
+                            </a>
+                            <a href="../products/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                                Explore Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../products/" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Campbell, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2026 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
