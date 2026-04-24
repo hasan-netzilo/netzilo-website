@@ -85,8 +85,18 @@
                     <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Products</a>
                     <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
                     <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
-                    <a href="../blog/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Blog</a>
-                    <a href="../advisories/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Advisories</a>
+                    <div class="relative group">
+                        <button type="button" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 hover:text-white border-b-2 border-blue-400 hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer inline-flex items-center">
+                            Resources
+                            <svg class="ml-1 w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 pt-2 z-30">
+                            <div class="bg-slate-900 border border-slate-800 rounded-lg shadow-xl min-w-[180px] overflow-hidden">
+                                <a href="../blog/" class="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Blog</a>
+                                <a href="../advisories/" class="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Advisories</a>
+                            </div>
+                        </div>
+                    </div>
                     <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
                     <a href="../partners/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Partners</a>
                 </div>
@@ -123,8 +133,16 @@
                     <a href="../products/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Products</a>
                     <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
                     <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
-                    <a href="../blog/" class="block px-3 py-2 text-base font-medium text-blue-400 bg-slate-800 transition-colors">Blog</a>
-                    <a href="../advisories/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Advisories</a>
+                    <div>
+                        <button type="button" onclick="toggleResourcesSubmenu()" class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-blue-400 hover:text-white bg-slate-800 hover:bg-slate-800 transition-colors">
+                            <span>Resources</span>
+                            <svg id="resources-chevron" class="w-4 h-4 transition-transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div id="mobile-resources-submenu" class="pl-4 border-l border-slate-800 ml-3 mt-1 space-y-1">
+                            <a href="../blog/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Blog</a>
+                            <a href="../advisories/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Advisories</a>
+                        </div>
+                    </div>
                     <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
                     <a href="../partners/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Partners</a>
                     <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
@@ -621,6 +639,13 @@
     </footer>
 
     <script>
+        function toggleResourcesSubmenu() {
+            const sm = document.getElementById('mobile-resources-submenu');
+            const ch = document.getElementById('resources-chevron');
+            if (sm) sm.classList.toggle('hidden');
+            if (ch) ch.classList.toggle('rotate-180');
+        }
+
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) {
