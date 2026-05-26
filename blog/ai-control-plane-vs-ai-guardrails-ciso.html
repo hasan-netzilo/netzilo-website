@@ -94,7 +94,6 @@
                     <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
                     <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Products</a>
                     <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
-                    <a href="../pricing/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Pricing</a>
                     <div class="relative group">
                         <button type="button" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 hover:text-white border-b-2 border-blue-400 hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer inline-flex items-center">
                             Resources
@@ -142,7 +141,6 @@
                     <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
                     <a href="../products/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Products</a>
                     <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
-                    <a href="../pricing/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Pricing</a>
                     <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
                     <a href="../partners/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Partners</a>
                     <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
@@ -301,7 +299,7 @@
                 <h2 class="text-3xl font-bold text-white mt-12 mb-6">The new defense triad for AI agents</h2>
 
                 <p>
-                    Defending AI agents well means combining three types of intelligence — and most tools today only have one or two of them:
+                    Most platforms get one of these right. A few get two. Almost none have all three — and the gap is exactly where AI-agent incidents live:
                 </p>
 
                 <!-- Intelligence Source 1 -->
@@ -342,7 +340,7 @@
                 <!-- Intelligence Source 2 -->
                 <div class="bg-slate-800/50 border border-purple-500/30 rounded-xl p-6 my-8">
                     <h3 class="text-xl font-bold text-purple-400 mb-3">2. Behavioral intelligence: what is actually happening</h3>
-                    <p class="text-gray-300 mb-4">This is where you move from "did the model say something bad" to "what is the agent doing right now." Runtime activity, not text output:</p>
+                    <p class="text-gray-300 mb-4">Stop looking at the prompt. Start looking at what the agent is doing. Runtime activity, not text output:</p>
                     <ul class="space-y-2 text-gray-300 mb-4">
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-purple-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -403,7 +401,7 @@
                 <h2 class="text-3xl font-bold text-white mt-12 mb-6">Netzilo AIDR: the missing AI control plane</h2>
 
                 <p>
-                    <strong class="text-purple-400">Netzilo AI Detection and Response</strong> is built around the idea that you need all three layers — and that they have to work together, not separately.
+                    <strong class="text-purple-400">Netzilo AI Detection and Response</strong> treats all three layers as required, not optional — and runs them together rather than in isolation.
                 </p>
 
                 <div class="bg-slate-900 border border-slate-700 rounded-xl p-6 my-8 font-mono text-sm">
@@ -417,21 +415,21 @@
                 </div>
 
                 <p>
-                    Where guardrails inspect what the model says, AIDR monitors what the agent actually does — across applications, sessions, files, data flows, and network activity. When behavior deviates from what's expected for that agent, in that context, AIDR detects it and enables response before the action becomes an incident.
+                    Where guardrails inspect what the model says, AIDR watches what the agent actually does — across applications, sessions, files, data flows, network connections. When behavior drifts from what's expected for that agent in that context, AIDR catches it. The point isn't to flag it later in a report. It's to stop it before it lands.
                 </p>
 
                 <div class="bg-slate-800/50 border-l-4 border-purple-500 rounded-r-xl px-6 py-4 my-8 italic text-white text-xl">
-                    The goal isn't to catch every bad prompt. It's to stop the downstream action before it causes damage.
+                    Don't catch the bad prompt. Stop the action it was trying to trigger.
                 </div>
 
                 <h2 class="text-3xl font-bold text-white mt-12 mb-6">Why "is this normal?" is the hardest question in AI security</h2>
 
-                <p>Traditional threat detection asks: <em>is this known bad?</em> Behavioral analytics asks: <em>is this unusual?</em> Neither question is sufficient for AI agents, because the same action can be completely routine for one agent and a serious red flag for another.</p>
+                <p>Traditional threat detection asks: <em>is this known bad?</em> Behavioral analytics asks: <em>is this unusual?</em> Both questions miss the point for AI agents — because the same action can be completely expected for one agent and a serious breach for another.</p>
 
-                <p>A sales assistant pulling CRM records is doing its job. The same agent pulling engineering repo access logs is not. A support agent reading a ticket is normal. That agent exporting hundreds of records to an external endpoint is not. Generic anomaly detection can't make that call without knowing the agent's role, its owner, its expected data scope, and what "normal" looks like for your specific organization.</p>
+                <p>A sales assistant pulling CRM records is doing its job. That same agent pulling engineering repo access logs is not. A support agent reading one ticket is normal. That agent bulk-exporting records to an external endpoint at 2am is not. Generic anomaly detection has no way to make that distinction — it doesn't know the agent's role, who owns it, what data it's supposed to be in, or what your organization considers normal for that workflow.</p>
 
                 <p>
-                    That context — who, what, why, for whom — is what we mean by organizational intelligence. And it's what makes the difference between a noisy alert and a meaningful one.
+                    Without that context, you get noise. A lot of it. And security teams that get too many false positives stop investigating the real ones.
                 </p>
 
                 <h2 class="text-3xl font-bold text-white mt-12 mb-6">From prompt security to runtime control</h2>
@@ -471,70 +469,17 @@
 
                 <h2 class="text-3xl font-bold text-white mt-12 mb-6">What CISOs should look for</h2>
 
-                <p>When evaluating whether a solution actually qualifies as an AI control plane — rather than a guardrail with better marketing — here's what to pressure-test:</p>
+                <p>When evaluating whether a solution actually qualifies as an AI control plane — rather than a guardrail with better marketing — a few things matter more than others.</p>
 
-                <div class="space-y-4 my-8">
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">1</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Visibility</strong> <span class="text-gray-300">into AI-agent activity across apps, data, sessions, and network flows.</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">2</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Behavioral baselines</strong> <span class="text-gray-300">showing what each agent normally does.</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">3</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Organizational context</strong> <span class="text-gray-300">around roles, owners, teams, workflows, and permitted data access.</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">4</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Threat intelligence</strong> <span class="text-gray-300">for known-bad indicators and attack patterns.</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">5</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Detection and response</strong> <span class="text-gray-300">for deviations from intended behavior.</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">6</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Containment controls</strong> <span class="text-gray-300">such as alerting, blocking, pausing, isolating, or terminating agent activity.</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-start bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                            <span class="text-white font-bold">7</span>
-                        </div>
-                        <div>
-                            <p><strong class="text-white">Auditability</strong> <span class="text-gray-300">for incident response and governance.</span></p>
-                        </div>
-                    </div>
-                </div>
+                <p>Start with the basics: can you actually see what your agents are doing? Not what they're saying — what they're doing. File access, network calls, session data, data flows across apps. If the answer is "we see some of it," that's not enough.</p>
 
-                <p>
-                    There's a meaningful difference between watching what AI produces and actually governing what it can do. Most enterprises right now only have the former.
-                </p>
+                <p>Next: does it understand baselines? An agent spiking in database reads at 3am is only alarming if you know what its normal read volume looks like. Tools that can't distinguish deviation from baseline generate the kind of alert noise that trains teams to ignore alerts.</p>
+
+                <p>The harder question is whether it carries organizational context — who owns each agent, what role it plays, what data it should and shouldn't touch. This is what separates a real control plane from a behavioral analytics tool that happens to watch AI processes.</p>
+
+                <p>Then the response side: when something is wrong, can you act? Not in the next reporting cycle — right now. Blocking a network call, pausing an agent, isolating it from a resource. And after the fact, do you have a clean audit trail for your incident response team and, increasingly, your regulators?</p>
+
+                <p>That's the full picture. Visibility, baselines, context, detection, containment, audit. Most vendors have two or three of these. That's what the gap looks like.</p>
 
                 <h2 class="text-3xl font-bold text-white mt-12 mb-6">The bottom line</h2>
 
@@ -612,7 +557,6 @@
                     <ul class="space-y-2">
                         <li><a href="../products/" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
                         <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
-                        <li><a href="../pricing/" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                         <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
                         <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
                         <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
