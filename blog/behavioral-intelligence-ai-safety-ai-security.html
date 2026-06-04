@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://www.netzilo.com/blog/behavioral-intelligence-ai-safety-ai-security" />
+    <title>How Netzilo AIDR Maps to the OWASP Agentic AI Maturity Levels - Netzilo Blog</title>
+    <meta name="description" content="OWASP's Agentic AI Governance Maturity Model defines five levels from ad-hoc awareness to adaptive, self-regulating governance. Here's how Netzilo AIDR's behavioral control plane moves organizations from Level 2 to Level 3 — and toward Level 4.">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-55G045HJ4J');
+    </script>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/netzilo_logo_blue.svg">
+    <link rel="icon" type="image/png" href="../assets/images/netzilo_logo_blue.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose-custom {
+            max-width: 65ch;
+        }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.netzilo.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.netzilo.com/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "How Netzilo AIDR Maps to the OWASP Agentic AI Maturity Levels", "item": "https://www.netzilo.com/blog/behavioral-intelligence-ai-safety-ai-security" }
+      ]
+    }
+    </script>
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
+    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hidden md:grid grid-cols-3 items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center space-x-8 relative z-20">
+                    <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
+                    <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Products</a>
+                    <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
+                    <div class="relative group">
+                        <button type="button" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 hover:text-white border-b-2 border-blue-400 hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer inline-flex items-center">
+                            Resources
+                            <svg class="ml-1 w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 pt-2 z-30">
+                            <div class="bg-slate-900 border border-slate-800 rounded-lg shadow-xl min-w-[180px] overflow-hidden">
+                                <a href="../blog/" class="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Blog</a>
+                                <a href="../advisories/" class="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Advisories</a>
+                                <a href="https://github.com/netzilo/aidr-sigma" target="_blank" rel="noopener" class="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Community Rules</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../about/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">About</a>
+                    <a href="../partners/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Partners</a>
+                </div>
+
+                <div class="flex items-center justify-end space-x-4">
+                    <a href="https://github.com/netzilo/aidr-sigma" target="_blank" rel="noopener" class="text-gray-300 hover:text-white transition-colors" aria-label="Community Rules on GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    </a>
+                    <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center justify-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile layout -->
+            <div class="md:hidden flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../" class="flex items-center">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-900 rounded-lg mt-2">
+                    <a href="../" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+                    <a href="../products/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Products</a>
+                    <a href="../solutions/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Solutions</a>
+                    <a href="../about/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">About</a>
+                    <a href="../partners/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Partners</a>
+                    <a href="../contact/" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors">Contact</a>
+                    <div class="border-t border-slate-700 mt-2 pt-2 flex items-center gap-3">
+                        <a href="https://github.com/netzilo/aidr-sigma" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800 transition-colors rounded-md" aria-label="Community Rules on GitHub">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://go.netzilo.com/register" target="_blank" rel="noopener" class="flex-1 block px-3 py-2 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md text-center">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <article class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <div class="flex items-center mb-6">
+                    <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-sm font-semibold border border-purple-600/30">
+                        AIDR
+                    </span>
+                    <span class="ml-4 text-gray-500">June 4, 2026</span>
+                    <span class="ml-4 text-gray-500">By Egemen Tas</span>
+                    <a href="https://www.linkedin.com/in/egementas" target="_blank" rel="noopener" class="ml-2 text-gray-500 hover:text-blue-400 transition-colors inline-flex items-center" aria-label="Egemen Tas on LinkedIn">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    How Netzilo AIDR Maps to the <span class="gradient-text">OWASP Agentic AI Maturity Levels</span>
+                </h1>
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose-custom text-lg text-gray-300">
+
+                <p>
+                    When we started building AIDR, the first question we kept running into wasn't about prompts or models. It was simpler than that: how do you know what an AI agent actually did?
+                </p>
+
+                <p>
+                    Not what it said. What it <em>did.</em>
+                </p>
+
+                <p>
+                    OWASP's <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 underline transition-colors"><em>State of Agentic AI Security and Governance</em></a> addresses this directly. In agentic deployments, AI safety and AI security can no longer be treated as separate problems. They converge at the same point — because agents act. They read files, call tools, invoke MCP servers, hit APIs, and make decisions at machine speed. A "safety failure" and a "security failure" can look identical from the outside: the agent did something it shouldn't have.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Guardrails are for models. Agents need something different.</h2>
+
+                <p>
+                    Traditional AI guardrails focus on language. They inspect prompts and responses, filter harmful outputs, and try to keep the model aligned with policy. That's useful — but it's designed for a chatbot, not an agent with access to your tools and data.
+                </p>
+
+                <p>
+                    Once an AI system can call tools, it crosses from language generation into execution. And execution has a completely different threat surface. OWASP's agentic security work is blunt about this: agents operate across trust boundaries, inherit permissions, and can cause real harm before a human has a chance to intervene. The question a CISO needs to answer isn't "did the model produce a safe answer?" It's "what did the agent actually do, and should it have been allowed to do that?"
+                </p>
+
+                <p>
+                    That's a monitoring problem, a correlation problem, and an enforcement problem — none of which prompt filtering solves.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Individual events are noise. Sequences are the signal.</h2>
+
+                <p>
+                    Here's what makes agentic threats hard: each action usually looks fine in isolation. An agent reads a document — normal. It calls an approved tool — normal. It connects to an external domain — also normal. None of those events would trigger an alert on their own.
+                </p>
+
+                <p>
+                    But string them together: sensitive file read → contents summarized → call to an unfamiliar MCP endpoint → outbound traffic to an unknown host. Now you have something. That sequence is the signal. You won't see it unless you're correlating behavior across the full execution chain.
+                </p>
+
+                <p>
+                    This is where AI safety becomes an operational security problem. And it's why static policy and annual audits don't cut it — agents can cause damage in seconds, so your detection and enforcement mechanisms need to operate at the same speed.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">What AIDR actually does</h2>
+
+                <p>
+                    AIDR is built around this problem. It's not a prompt monitor. It's a runtime behavioral control plane — it watches what agents actually do: tool calls, MCP activity, file access, network egress, API calls, identity context. It correlates those signals into behavior chains and enforces policy when something crosses a boundary.
+                </p>
+
+                <p>
+                    The way we think about it, three kinds of intelligence have to meet at runtime: <strong class="text-white">threat intelligence</strong> tells you what's bad, <strong class="text-white">behavioral intelligence</strong> tells you what's actually happening, and <strong class="text-white">organizational intelligence</strong> tells you what's normal. Behavior is the layer in the middle — the one that turns the other two into a decision. Here's how they fit together:
+                </p>
+
+                <figure class="my-10">
+                    <img src="../assets/images/netzilo-ai-control-plane.png"
+                         alt="The Netzilo AI Control Plane: a Venn diagram showing Threat Intelligence (what is bad), Behavioral Intelligence (what is happening), and Organizational Intelligence (what is normal) converging on Netzilo AIDR at the center, with detail cards describing each intelligence source."
+                         class="w-full rounded-xl border border-slate-700 shadow-2xl"
+                         loading="lazy">
+                    <figcaption class="text-sm text-gray-500 mt-3 text-center italic">
+                        Netzilo AIDR combines threat, behavioral, and organizational intelligence into a single deterministic runtime barrier around AI agents.
+                    </figcaption>
+                </figure>
+
+                <p>
+                    That matters because real enterprise deployments aren't clean. A mid-sized company might be running Claude in Cursor, OpenAI through an internal copilot, Gemini in Google Workspace, plus a handful of custom agents and low-code automations — all at the same time, with overlapping permissions and no unified visibility. You can't govern what you can't see. AIDR gives you that visibility across all of it, regardless of which model or platform is underneath.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Detection is half of it. The other half is prevention.</h2>
+
+                <p>
+                    It's worth being clear about this, because "monitoring" and "observability" can make AIDR sound like it only watches. It doesn't. Seeing what an agent is doing is the first half of the job; the second half is being able to stop it. When a behavior chain crosses a policy, risk, or trust boundary, AIDR can intervene in line — block the tool call, cut the network egress, halt the agent before the action completes — not just log it after the fact and file a ticket.
+                </p>
+
+                <p>
+                    That distinction matters more for agents than it does for traditional security tooling. A human attacker moves at human speed; you often have minutes to respond. An agent can read a file, summarize it, and exfiltrate it through an MCP tool in the time it takes to render a dashboard. After-the-fact detection means you find out once the data is already gone. Prevention means the chain never completes. AIDR is built to do both, and for agentic workloads the prevention half is the one that actually contains the blast radius.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mt-12 mb-6">Where this lands on the OWASP maturity model</h2>
+
+                <p>
+                    OWASP's report includes a Governance Maturity Model with five levels, and reading through it, the thing that struck me is how cleanly it describes the journey we built AIDR to support. Levels 0 and 1 are about awareness — most organizations are here, running shadow agents with no inventory and generic AI policies. Level 2 adds formal policy and human-in-the-loop review, but monitoring is still periodic. That's the wall most companies hit: good policy on paper, no way to see what agents are doing between audits.
+                </p>
+
+                <p>
+                    Level 3 — what OWASP calls "Integrated, Continuous Oversight" — is where the model stops describing documents and starts describing a system. Read the key actions OWASP lists for it:
+                </p>
+
+                <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6 my-8">
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">—</span>
+                            <span>Deploy real-time monitoring and anomaly detection</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">—</span>
+                            <span>Implement kill switches and autonomy controls</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">—</span>
+                            <span>Enforce governance through machine-readable policies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-3 mt-1">—</span>
+                            <span>Integrate agent telemetry into observability platforms</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p>
+                    That's the product. Real-time behavioral monitoring, policy-driven enforcement that can stop an agent mid-action, machine-readable rules, and telemetry that flows into the tools your SOC already runs. AIDR is, in practice, the control plane that moves an organization from Level 2 to Level 3 — from "we have a policy" to "we can see and stop a misaligned agent in seconds." That second formulation is OWASP's own test, by the way: they say a leader can gauge maturity by asking "how fast can we see and stop a misaligned agent?"
+                </p>
+
+                <p>
+                    Level 4 — adaptive, self-regulating governance with trust scores and cryptographic agent identity — is the direction the behavior graph is built to grow into. Once you're correlating behavior continuously, trust scoring and auto-tuning guardrails become the natural next layer rather than a separate system.
+                </p>
+
+                <p>
+                    There's one more piece worth calling out. OWASP treats Shadow AI (their "AT0" tier) as the prerequisite for everything else — you can't govern an estate you can't see, and they note shadow usage is "manageable" only when continuous monitoring includes shadow AI detection. Because AIDR observes behavior at runtime rather than relying on a registry someone has to maintain, it surfaces shadow agents as a side effect of how it works. Discovery isn't a separate project; it falls out of the monitoring.
+                </p>
+
+                <p>
+                    Guardrails are a starting point. They address the model layer, and they're worth having. But the moment an AI system can take action in the world, you need controls that operate at the execution layer — not just the output layer. That's what behavioral intelligence is for. It's also, looking at the OWASP model, the difference between writing a governance policy and actually being able to enforce one.
+                </p>
+
+            </div>
+
+            <!-- Back to Blog -->
+            <div class="mt-12 text-center">
+                <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-semibold">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back to Blog
+                </a>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-16 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold mb-4">Ready to govern your AI agents at runtime?</h3>
+                    <p class="text-gray-400 mb-6">
+                        Discover how Netzilo AIDR turns agent behavior into the enterprise control plane — combining threat, behavioral, and organizational intelligence to make autonomy governable.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="../contact/" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                            Contact Us
+                        </a>
+                        <a href="../products/" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block">
+                            Explore Product
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Netzilo extends enterprise edge capabilities to endpoint environments through a comprehensive Digital Enterprise Workplace solution.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/netzilo/" target="_blank" rel="noopener" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../products/" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="../solutions/" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="../about/" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../legal/" class="text-gray-400 hover:text-white transition-colors">Legal</a></li>
+                        <li><a href="../contact/" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>sales@netzilo.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+1 (415) 985-2636</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Campbell, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2026 Netzilo, INC. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../privacy-policy" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="../terms-of-service" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleResourcesSubmenu() {
+            const sm = document.getElementById('mobile-resources-submenu');
+            const ch = document.getElementById('resources-chevron');
+            if (sm) sm.classList.toggle('hidden');
+            if (ch) ch.classList.toggle('rotate-180');
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
