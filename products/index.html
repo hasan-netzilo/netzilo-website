@@ -150,7 +150,7 @@
                 </div>
                 <div class="flex items-center justify-center space-x-8 relative z-20">
                     <a href="../" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Home</a>
-                    <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Products</a>
+                    <a href="../products/" class="nav-link px-4 py-3 text-sm font-medium text-blue-400 border-b-2 border-blue-400 transition-colors cursor-pointer">Product</a>
                     <a href="../solutions/" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer">Solutions</a>
                     <div class="relative group">
                         <button type="button" class="nav-link px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 transition-colors cursor-pointer inline-flex items-center">
@@ -229,88 +229,66 @@
         <!-- ==================== AIDR: AI Detection and Response ==================== -->
         <section id="aidr" class="py-20 bg-slate-900 scroll-reveal">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4">
-                            <span class="text-blue-400 text-xs font-semibold tracking-wider uppercase">Flagship Feature</span>
-                        </div>
-                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">AIDR: AI Detection<br>and Response</h2>
-                        <p class="text-lg text-gray-300 mb-6">
-                            AIDR is the behavioral detection engine for AI agents. Unlike static prompt scanning, AIDR monitors what agents actually <em>do</em> — detecting anomalous behavior, privilege escalation, and sophisticated multi-step attacks in real time.
-                        </p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start space-x-3">
-                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-gray-300">Enforces <strong class="text-white">Meta's "Agents Rule of Two"</strong> — no agent holds more than 2 of 3 critical privileges simultaneously</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-gray-300">Treats AI agents as <strong class="text-white">machine identities</strong> with dedicated security policies</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-gray-300">Runs <strong class="text-white">entirely on the endpoint</strong> — no enterprise data passes through third-party servers</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <svg class="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-gray-300">Integrates with Netzilo's <strong class="text-white">Zero Trust architecture</strong> to isolate compromised agents</span>
-                            </li>
-                        </ul>
-                        <button onclick="openDemoModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors inline-flex items-center cursor-pointer">
-                            See AIDR in Action
-                            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="space-y-4">
-                        <!-- MCP Security -->
-                        <div class="bg-slate-800 border border-cyan-500/30 rounded-xl p-6 card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-cyan-600/20 rounded-lg flex-shrink-0">
-                                    <svg class="h-6 w-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-lg mb-2">MCP Security</h4>
-                                    <p class="text-gray-400 text-sm">Real-time security monitoring for MCP communications. Scans every tool call, detects threats, and enforces policies across all MCP server interactions.</p>
-                                </div>
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white">AIDR: AI Detection &amp; Response</h2>
+                </div>
+
+                <!-- 60 Seconds, No Alert — the attack chain -->
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                        <div class="border-l-4 border-blue-500 p-6 md:p-8">
+                            <!-- Header -->
+                            <div class="flex items-center mb-5">
+                                <svg class="h-8 w-8 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg>
+                                <h3 class="ml-3 text-xl md:text-2xl font-bold text-white tracking-wider uppercase">60 Seconds, No Alert</h3>
                             </div>
-                        </div>
-                        <!-- Behavioral Analysis -->
-                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-blue-600/20 rounded-lg flex-shrink-0">
-                                    <svg class="h-6 w-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <!-- Intro -->
+                            <p class="text-gray-400 italic mb-6 leading-relaxed">
+                                A coding agent your team approved on Friday is compromised through a poisoned tool description. Here is the chain — and what each layer of your stack reports while it happens:
+                            </p>
+                            <!-- Attack chain steps -->
+                            <ol class="space-y-4 mb-7">
+                                <li class="flex items-center">
+                                    <span class="flex-shrink-0 h-9 w-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">1</span>
+                                    <span class="ml-4 text-gray-200">Agent ingests a malicious tool description (indirect prompt injection)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="flex-shrink-0 h-9 w-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">2</span>
+                                    <span class="ml-4 text-gray-200">Acquires an external &ldquo;skill&rdquo; from an unknown host</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="flex-shrink-0 h-9 w-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">3</span>
+                                    <span class="ml-4 text-gray-200">Reads credentials and customer records from the local workspace</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="flex-shrink-0 h-9 w-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">4</span>
+                                    <span class="ml-4 text-gray-200">Sends them outbound to the attacker over a routine-looking API call</span>
+                                </li>
+                            </ol>
+                            <!-- What each layer sees -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div class="bg-slate-900 border border-slate-700 rounded-lg p-4">
+                                    <p class="text-blue-400 text-xs font-bold tracking-wider uppercase mb-1">EDR Sees</p>
+                                    <p class="text-gray-400 text-sm">Normal process telemetry. No malware.</p>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-lg mb-2">Behavioral Analysis</h4>
-                                    <p class="text-gray-400 text-sm">Monitors every AI agent action in real time. Detects anomalous behavior patterns, privilege escalation, and data access anomalies that static rules miss.</p>
+                                <div class="bg-slate-900 border border-slate-700 rounded-lg p-4">
+                                    <p class="text-blue-400 text-xs font-bold tracking-wider uppercase mb-1">SIEM Sees</p>
+                                    <p class="text-gray-400 text-sm">A few benign-looking API calls.</p>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- Prompt Injection Defense -->
-                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-red-600/20 rounded-lg flex-shrink-0">
-                                    <svg class="h-6 w-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-lg mb-2">Prompt Injection Defense</h4>
-                                    <p class="text-gray-400 text-sm">Catches sophisticated multi-step prompt injection attacks that evade static prompt scanning. Analyzes the full behavioral chain, not just individual prompts.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- AI DLP -->
-                        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 card-hover">
-                            <div class="flex items-start space-x-4">
-                                <div class="p-3 bg-purple-600/20 rounded-lg flex-shrink-0">
-                                    <svg class="h-6 w-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-lg mb-2">AI DLP</h4>
-                                    <p class="text-gray-400 text-sm">Real-time output scanning prevents sensitive data leakage. Detects and redacts PII, credentials, and financial data from AI-generated responses automatically.</p>
+                                <div class="bg-blue-500 rounded-lg p-4">
+                                    <p class="text-blue-950 text-xs font-bold tracking-wider uppercase mb-1">AIDR Sees</p>
+                                    <p class="text-blue-950 text-sm font-bold">The whole chain — and stops it.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <button onclick="openDemoModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors inline-flex items-center cursor-pointer">
+                        See AIDR in Action
+                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
                 </div>
             </div>
         </section>
