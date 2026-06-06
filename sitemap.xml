@@ -4,32 +4,16 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
+<!-- English site -->
 <url>
   <loc>https://www.netzilo.com/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/product/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/solutions/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/pricing/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
+  <loc>https://www.netzilo.com/about/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -38,14 +22,44 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/advisories/mcp-supply-chain-rce-vulnerabilities.html</loc>
-  <lastmod>2026-04-24T00:00:00+00:00</lastmod>
-  <priority>0.70</priority>
+  <loc>https://www.netzilo.com/blog/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/advisories/openclaw-claw-chain-rce-vulnerabilities.html</loc>
-  <lastmod>2026-06-04T00:00:00+00:00</lastmod>
-  <priority>0.70</priority>
+  <loc>https://www.netzilo.com/case-study/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/contact/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/partners/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/pricing/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/product/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/products/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/press-releases/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.netzilo.com/resources/whitepapers/</loc>
@@ -53,45 +67,242 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/resources/whitepapers/the-ai-control-plane-for-the-agentic-workforce</loc>
+  <loc>https://www.netzilo.com/schedule/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/solutions/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/advisories/mcp-supply-chain-rce-vulnerabilities</loc>
+  <lastmod>2026-04-24T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/advisories/openclaw-claw-chain-rce-vulnerabilities</loc>
+  <lastmod>2026-06-04T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/whitepapers/netzilo-aidr-brief</loc>
   <lastmod>2026-06-06T00:00:00+00:00</lastmod>
   <priority>0.70</priority>
 </url>
 <url>
   <loc>https://www.netzilo.com/resources/whitepapers/secure-digital-workspace-for-the-post-ai-enterprise</loc>
   <lastmod>2026-06-06T00:00:00+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/whitepapers/the-ai-control-plane-for-the-agentic-workforce</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>https://www.netzilo.com/resources/whitepapers/the-next-generation-alternative-to-vdi-rbi-solutions</loc>
   <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/AI-Agents-Start-Calling-APIs-You-Didnt-Approve</loc>
+  <lastmod>2026-04-16T00:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/about/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.netzilo.com/blog/Agent-First-Governance</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/contact/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.netzilo.com/blog/DLP-data-loss-prevention</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/Traditional-SIEM-Limitations</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/What-is-Agentic-SASE</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/Zero-Trust-for-Zero-Humans</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/achieving-strategic-security-situational-awareness-advanced-ai</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/ai-control-plane-vs-ai-guardrails-ciso</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/aidr-detecting-and-containing-ai-agent-threats</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/behavioral-intelligence-ai-safety-ai-security</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/dynamic-network-security-enforcing-posture-based-controls</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/enforcing-architectural-security-for-ai-agents-meta-rule-of-two</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/enterprise-browser-architecture</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/enterprise-browser-security-evaluation-guide</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/mcp-security-problem</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/nsa-mcp-security-advisory-netzilo-response</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/preventing-cursor-vscode-attacks</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/protecting-ai-agents-tool-poisoning</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/protecting-the-flow-real-time-data-loss-prevention-for-ai-agents</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/redefining-privileged-access-security-ai-proctored-browser-sessions</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/secure-access-MDM-footprint</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/securing-generative-ai-adoption-enabling-developer-productivity</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/the-paradigm-shift-is-here-again</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/what-happens-when-ai-agents-become-your-users-and-your-attack-surface</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/blog/what-is-prompt-injection</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/press/netzilo-ai-edge-openclaw-agents-visibility-sandboxing-governance/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.netzilo.com/legal/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/privacy-policy.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.netzilo.com/legal/acceptable-use-policy</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/terms-of-service.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.netzilo.com/legal/data-processing-addendum</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
+<url>
+  <loc>https://www.netzilo.com/legal/free-trial-offer</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/main-service-agreement</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/privacy-policy</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/security-policies</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/service-level-agreement</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/special-terms</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/subprocessors-list</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/legal/terms-of-service</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/privacy-policy</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/terms-of-service</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+
+<!-- Turkish site (tr) -->
 <url>
   <loc>https://www.netzilo.com/tr/product/</loc>
   <lastmod>2025-12-14T10:37:53+00:00</lastmod>
@@ -108,76 +319,6 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/blog/behavioral-intelligence-ai-safety-ai-security</loc>
-  <lastmod>2026-06-04T00:00:00+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/the-paradigm-shift-is-here-again.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/aidr-detecting-and-containing-ai-agent-threats.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/AI-Agents-Start-Calling-APIs-You-Didnt-Approve</loc>
-  <lastmod>2026-04-16T00:00:00+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/preventing-cursor-vscode-attacks.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/protecting-ai-agents-tool-poisoning.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/what-happens-when-ai-agents-become-your-users-and-your-attack-surface.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/DLP-data-loss-prevention.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/redefining-privileged-access-security-ai-proctored-browser-sessions.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/protecting-the-flow-real-time-data-loss-prevention-for-ai-agents.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/enforcing-architectural-security-for-ai-agents-meta-rule-of-two.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/dynamic-network-security-enforcing-posture-based-controls.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/achieving-strategic-security-situational-awareness-advanced-ai.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/securing-generative-ai-adoption-enabling-developer-productivity.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://www.netzilo.com/tr/about/</loc>
   <lastmod>2025-12-14T10:37:53+00:00</lastmod>
   <priority>0.64</priority>
@@ -188,57 +329,12 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.netzilo.com/legal/data-processing-addendum.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/subprocessors-list.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/acceptable-use-policy.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/security-policies.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/main-service-agreement.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/service-level-agreement.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/special-terms.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/legal/free-trial-offer.html</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://www.netzilo.com/tr/</loc>
   <lastmod>2025-12-14T10:37:53+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.netzilo.com/tr/blog/</loc>
-  <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/index.html</loc>
   <lastmod>2025-12-14T10:37:53+00:00</lastmod>
   <priority>0.51</priority>
 </url>
@@ -258,6 +354,4 @@
   <priority>0.33</priority>
 </url>
 
-
 </urlset>
-
