@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://www.netzilo.com/resources/press-releases/" />
-    <title>Press Releases - Netzilo</title>
-    <meta name="description" content="Official press releases and announcements from Netzilo — the AI security company delivering visibility, isolation, and governance for modern AI workloads." />
-    
+    <link rel="canonical" href="https://www.netzilo.com/press/netzilo-aidr-community-rules/" />
+    <title>Press Release: Netzilo Releases AI Detection &amp; Response (AIDR) Rules to the Community - Netzilo</title>
+    <meta name="description" content="Netzilo has released its AI Detection &amp; Response (AIDR) rules to the open-source community at github.com/netzilo/aidr-sigma — a transparent, inspectable, contributable detection library for threats targeting autonomous AI agents." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Netzilo Releases AI Detection & Response (AIDR) Rules to the Community" />
+    <meta property="og:description" content="Open-source detection library brings transparency to the AI control plane securing the agentic workforce." />
+    <meta name="robots" content="index,follow" />
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-55G045HJ4J"></script>
     <script>
@@ -45,35 +49,71 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        .prose-custom p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+        .prose-custom li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        .prose-custom h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+        .prose-custom blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 4px solid #3b82f6;
+            background: rgba(59,130,246,0.08);
+            border-radius: 0 0.5rem 0.5rem 0;
+            color: #cbd5e1;
+        }
+        .prose-custom blockquote p {
+            margin-bottom: 0;
+        }
+        .divider {
+            height: 1px;
+            background: rgba(148,163,184,0.15);
+            margin: 1.5rem 0 2rem;
+        }
     </style>
+
+    <!-- Article structured data -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.netzilo.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.netzilo.com/resources/" },
-            { "@type": "ListItem", "position": 3, "name": "Press Releases", "item": "https://www.netzilo.com/resources/press-releases/" }
-      ]
+        "@context": "https://schema.org",
+        "@type": "PressRelease",
+        "headline": "Netzilo Releases AI Detection & Response (AIDR) Rules to the Community",
+        "datePublished": "2026-06-09",
+        "inLanguage": "en",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Netzilo",
+            "url": "https://www.netzilo.com"
+        }
     }
     </script>
+
     <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("961Y0HD4WGNG");</script>
     <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="18zAS9YPxzPxWtVEx" data-version="062024"></script>
 </head>
 <body class="bg-slate-950 text-white min-h-screen">
+
     <!-- Navigation -->
     <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,8 +162,6 @@
                         <img src="../../assets/images/netzilo_logo_full_white.svg" alt="Netzilo" class="h-8">
                     </a>
                 </div>
-
-                <!-- Mobile menu button -->
                 <div class="flex items-center">
                     <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,78 +205,104 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative py-20 overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-purple-600/20"></div>
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <nav class="flex items-center space-x-2 text-sm text-gray-500" aria-label="Breadcrumb">
+            <a href="../../" class="hover:text-gray-300 transition-colors">Home</a>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <a href="../../resources/press-releases/" class="hover:text-gray-300 transition-colors">Press Releases</a>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <span class="text-gray-400">AIDR Community Rules</span>
+        </nav>
+    </div>
+
+    <!-- Press Release Header -->
+    <header class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4">
+        <div class="flex items-center gap-3 mb-5">
+            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs font-semibold border border-blue-600/30 uppercase tracking-wide">
+                For Immediate Release
+            </span>
+            <span class="text-gray-500 text-sm">
+                <time datetime="2026-06-09">June 9, 2026</time>
+            </span>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-            <div class="text-sm font-semibold text-blue-400 uppercase tracking-widest mb-4">Resources</div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                Press <span class="gradient-text">Releases</span>
-            </h1>
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Official announcements from Netzilo on product launches, partnerships, and company milestones.
-            </p>
-        </div>
-    </section>
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4 text-white">
+            Netzilo Releases AI Detection &amp; Response (AIDR) Rules to the Community
+        </h1>
+        <p class="text-xl text-gray-400 leading-relaxed mb-5">
+            Open-source detection library brings transparency to the AI control plane securing the agentic workforce
+        </p>
+        <p class="text-gray-400 text-lg leading-relaxed mb-2">
+            <strong class="text-gray-300">Campbell, Calif.</strong> — June 9, 2026
+        </p>
+    </header>
 
-    <!-- Press Releases Section -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Divider -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="divider"></div>
+    </div>
 
-                <!-- Press Release Card: AIDR Community Rules -->
-                <a href="../../press/netzilo-aidr-community-rules/" class="bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700 card-hover block">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs font-semibold border border-blue-600/30">
-                                Company News
-                            </span>
-                            <span class="ml-auto text-gray-500 text-sm">Jun 9, 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-white">Netzilo Releases AI Detection &amp; Response (AIDR) Rules to the Community</h3>
-                        <p class="text-gray-400 mb-6 line-clamp-3">
-                            An open-source detection library — available at github.com/netzilo/aidr-sigma — brings transparency to the AI control plane securing the agentic workforce.
-                        </p>
-                        <div class="flex items-center text-blue-400 font-semibold">
-                            Read More
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+    <!-- Press Release Body -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <article class="prose-custom text-gray-300">
 
-                <!-- Press Release Card 1 -->
-                <a href="../../press/netzilo-ai-edge-openclaw-agents-visibility-sandboxing-governance/" class="bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700 card-hover block">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs font-semibold border border-blue-600/30">
-                                Product Announcement
-                            </span>
-                            <span class="ml-auto text-gray-500 text-sm">Feb 18, 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-white">Netzilo AI Edge Delivers Enterprise-Grade Visibility, Sandboxing, and Governance for OpenClaw Agents</h3>
-                        <p class="text-gray-400 mb-6 line-clamp-3">
-                            Expanded capabilities provide visibility across the AI stack, AI Detection &amp; Response, transparent agent isolation, and advanced data governance controls for OpenClaw agent deployments.
-                        </p>
-                        <div class="flex items-center text-blue-400 font-semibold">
-                            Read More
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+            <p><strong class="text-white">Netzilo</strong>, the company building the AI control plane for the agentic workforce, today announced the public release of its <strong class="text-white">AI Detection &amp; Response (AIDR)</strong> rules to the open-source community. The detection rules are available immediately and at no cost at <a href="https://github.com/netzilo/aidr-sigma" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">github.com/netzilo/aidr-sigma</a>, giving security teams a transparent, inspectable, and contributable library for detecting threats that target — or originate from — autonomous AI agents.</p>
 
+            <p>As enterprises deploy AI agents faster than they can govern them, traditional security tooling has been left blind. Endpoint Detection &amp; Response (EDR) and Security Information &amp; Event Management (SIEM) systems monitor low-level telemetry such as file reads and network calls, but lack the context to understand the intent behind an agent's actions. Netzilo calls this the "Context Gap" — and it allows techniques such as prompt injection and tool poisoning to pass as ordinary activity, while agents operate over machine-speed protocols like Model Context Protocol (MCP) that never reach traditional security gates.</p>
+
+            <p>With today's release, Netzilo is opening the detection logic at the heart of AIDR. Each rule describes, in a readable and standardized format, the behavioral pattern that defines a specific AI-agent threat and the action the system should take when it occurs. Because the rules are open, any engineer can read precisely how a detection works, adapt it to their own environment, and contribute improvements back to the community.</p>
+
+            <blockquote>
+                <p>"Securing AI agents cannot be a black box. By releasing our AIDR rules to the community, we are turning AI agent defense into shared infrastructure — a control plane the whole industry can build on."</p>
+                <p class="mt-3 text-sm text-gray-400">— Egemen Tas, CEO of Netzilo</p>
+            </blockquote>
+
+            <p>Netzilo describes AIDR as a runtime control plane for the agentic workforce. Rather than supervising language alone, AIDR builds a runtime graph of every action an agent takes — tool calls, file reads, network requests, and skill acquisitions — and correlates multi-stage sequences that appear harmless in isolation but signal a breach in aggregate. The platform enforces deterministic, policy-as-code controls and can isolate or terminate a compromised agent in real time, without routing enterprise data through third-party infrastructure.</p>
+
+            <h2>Detections built for AI-agent threats</h2>
+
+            <p>The initial community rule set targets threats unique to AI agents, including:</p>
+            <ul>
+                <li>Prompt injection and indirect prompt injection</li>
+                <li>Tool poisoning</li>
+                <li>Capability hijacking and privilege escalation</li>
+                <li>Multi-stage data-exfiltration chains</li>
+            </ul>
+
+            <p>The Netzilo AIDR community rules are available now at <a href="https://github.com/netzilo/aidr-sigma" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">github.com/netzilo/aidr-sigma</a>. The repository is open for inspection, deployment, and contribution, and Netzilo will continue to publish new detections as agent threats evolve.</p>
+
+            <!-- About Section -->
+            <div class="mt-10 pt-8 border-t border-slate-700/60">
+                <h2>About Netzilo</h2>
+                <p>Netzilo builds the AI control plane for the agentic workforce. Its AIDR (AI Detection &amp; Response) platform delivers behavioral intelligence, deterministic Governance-as-Code enforcement, and kill-switch capability for autonomous AI agents, closing the visibility gap that EDR and SIEM leave open. Netzilo is headquartered in Campbell, California. Learn more at <a href="https://www.netzilo.com" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors">www.netzilo.com</a>.</p>
             </div>
+
+            <!-- Media Contact Box -->
+            <div class="mt-10 p-6 bg-slate-800/60 border border-slate-700 rounded-xl">
+                <h3 class="text-white font-semibold mb-3">Media Contact</h3>
+                <p class="mb-1">Tetiana Kohut</p>
+                <p class="mb-1">Netzilo, Inc.</p>
+                <p class="mb-1"><a href="mailto:press@netzilo.com" class="text-blue-400 hover:text-blue-300 transition-colors">press@netzilo.com</a></p>
+                <p class="mb-0">+1 (415) 985-2636</p>
+            </div>
+
+            <p class="text-center text-gray-600 mt-10 mb-0">###</p>
+
+        </article>
+
+        <!-- Back to Press Releases -->
+        <div class="mt-12">
+            <a href="../../resources/press-releases/" class="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back to Press Releases
+            </a>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 mt-20">
+    <footer class="bg-slate-900 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Company Info -->
@@ -328,4 +392,3 @@
     </script>
 </body>
 </html>
-
