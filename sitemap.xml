@@ -43,6 +43,31 @@
   <priority>0.70</priority>
 </url>
 <url>
+  <loc>https://www.netzilo.com/advisories/openclaw-claw-chain-rce-vulnerabilities.html</loc>
+  <lastmod>2026-06-04T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/whitepapers/</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/whitepapers/the-ai-control-plane-for-the-agentic-workforce</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/whitepapers/secure-digital-workspace-for-the-post-ai-enterprise</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.netzilo.com/resources/whitepapers/the-next-generation-alternative-to-vdi-rbi-solutions</loc>
+  <lastmod>2026-06-06T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://www.netzilo.com/about/</loc>
   <lastmod>2025-12-14T10:37:53+00:00</lastmod>
   <priority>0.80</priority>
@@ -90,11 +115,6 @@
 <url>
   <loc>https://www.netzilo.com/blog/the-paradigm-shift-is-here-again.html</loc>
   <lastmod>2025-12-14T10:37:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.netzilo.com/blog/behavioral-intelligence-ai-safety-ai-security</loc>
-  <lastmod>2026-06-04T00:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
